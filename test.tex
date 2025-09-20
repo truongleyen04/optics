@@ -1,0 +1,63 @@
+% 声明文档类型为 ctexart，这是专门为中文排版设计的文章类
+\documentclass{ctexart}
+
+% --- 引入宏包 (Packages) ---
+% geometry 宏包用于设置页面边距
+\usepackage{geometry}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% amsmath 宏包提供了强大的数学公式排版功能
+\usepackage{amsmath}
+
+% graphicx 宏包用于插入图片
+\usepackage{graphicx}
+
+
+% --- 文档信息 ---
+\title{高斯光束的传输特性分析}
+\author{张三}
+\date{\today} % \today 会自动生成当天的日期
+
+
+% --- 正文开始 ---
+\begin{document}
+
+\maketitle % 这条命令会根据上面的标题、作者、日期信息生成标题页
+
+\section{引言}
+
+本文档旨在演示如何在 Visual Studio Code 中使用 LaTeX 编辑一份包含中文、英文和数学公式的简易光学报告。
+高斯光束 (Gaussian Beam) 是光学中一种非常重要的激光束模型。
+
+\section{基本理论}
+
+高斯光束的束腰半径 $w_0$ 和瑞利范围 (Rayleigh range) $z_R$ 是描述其特性的两个核心参数。它们之间的关系如下：
+$$
+z_R = \frac{\pi w_0^2}{\lambda}
+$$
+其中 $\lambda$ 是光的波长。
+
+当光线从一种介质入射到另一种介质时，会发生折射。其路径由斯涅尔定律 (Snell's Law) 决定：
+$$
+n_1 \sin \theta_1 = n_2 \sin \theta_2
+$$
+这里：
+\begin{itemize}
+    \item $n_1$ 和 $n_2$ 分别是两种介质的折射率。
+    \item $\theta_1$ 和 $\theta_2$ 分别是入射角和折射角。
+\end{itemize}
+
+\section{实验光路图}
+
+
+
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[width=0.8\textwidth]{optical_setup.png}
+% \caption{实验光路图示例}
+% \label{fig:setup}
+% \end{figure}
+
+
+\end{document}
+% --- 正文结束 ---
