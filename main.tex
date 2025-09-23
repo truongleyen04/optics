@@ -1,0 +1,71 @@
+\documentclass[12pt]{ctexart} % 使用 ctexart 文档类，专为中文排版设计。12pt 为默认字体大小。
+
+% --- 核心功能宏包 ---
+\usepackage{amsmath}        % 美国数学学会 (AMS) 宏包，提供进阶的数学公式环境。
+\usepackage{amssymb}        % 提供 amsmath 未包含的额外数学符号。
+\usepackage{graphicx}       % 用于插入图片的核心宏包，提供 \includegraphics 命令。
+\usepackage{xcolor}         % 提供颜色支持，可用于文字、背景、表格等。
+\usepackage{setspace}       % 用于灵活调整行距，例如 \onehalfspacing, \doublespacing。
+
+% --- 排版与格式设定宏包 ---
+\usepackage{geometry}       % 方便地设定页面边距与版心。
+\usepackage{siunitx}        % 专业地排版带有国际单位 (SI) 的数字与单位。
+\usepackage{abstract}       % 提供摘要格式的自定义功能。
+\usepackage{cite}           % 美化与管理引用文献标号，例如将 [1,2,3] 压缩为 [1-3]。
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=red, urlcolor=cyan]{hyperref} % 建立 PDF 超链接，通常建议放在绝大多数宏包之后加载。
+\usepackage{cleveref}       % 智能引用，可自动识别图、表、公式，生成如 “图 1” 而非仅 “1”。
+
+% --- 页面布局设定 (geometry) ---
+\geometry{
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=30mm,
+    bottom=30mm,
+}
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2. 自定义命令与全局设定
+% --- 为了代码的简洁与一致性 ---
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- 自定义一个用于“定义”的命令 ---
+% #1 代表第一个参数 (术语名称)
+% 使用 \noindent 来避免段首缩进，使其看起来更像一个标题。
+\newcommand{\mydef}[1]{\par\noindent\textbf{#1}:}
+
+% --- 自定义图片插入命令 (基础版) ---
+% #1: 图片路径 (例如: picture/image.png)
+% #2: 图片说明 (caption)
+% #3: 引用标签 (label, 无需加 fig: 前缀)
+\newcommand{\insertfigure}[3]{
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{#1}
+        \caption{#2}
+        \label{fig:#3}
+    \end{figure}
+}
+
+\newcommand{\boxedmath}[1]{
+  \fcolorbox{black}{white}{\scalebox{1.3}{#1}}
+}
+
+
+% --- 文档信息 ---
+\title{\bfseries 光学} % 标题内容。字体大小由文档类自动处理，这里只指定粗体。
+\author{施维圣}
+\date{\today}                 % 使用 \today 自动生成编译当天的日期。
+
+
+
+\begin{document}
+\maketitle
+\include{optics_learning}
+
+
+
+\end{document} % 文档结束
