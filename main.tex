@@ -43,7 +43,7 @@
 % #2: 图片说明 (caption)
 % #3: 引用标签 (label, 无需加 fig: 前缀)
 \newcommand{\insertfigure}[3]{
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\textwidth]{#1}
         \caption{#2}
@@ -65,8 +65,9 @@
 
 \begin{document}
 \maketitle
-\include{optics_learning}
-
+\include{feima}
+\include{chengxiang}
+\include{guangxueyiqi}
 
 
 \end{document} % 文档结束

@@ -102,9 +102,78 @@ $$
     \boxedmath{$n_1\sin i_1 = n_2\sin i_2$}
 \end{center}
 
+\subsubsection*{评述惠更斯原理}
+{
+\small\subsubsection*{惠更斯原理的不足}
+    {
+        \large
+        \centering
+        1.不能回答光振幅和光强的问题
+         
+        2.不能回答光相位的传播问题
+        
+    }
+    \subsubsection*{惠更斯原理的精华}
+    {
+        \large
+        \centering
+        次波源概念的提出
+        
+    }
+}
 
 
 \subsubsection{光程概念及其意义}
+
+
+\mydef{光程}光线路径的几何长度与所经过的介质折射率的乘积
+\subsubsection*{介质分区均匀光程:}
+
+$$
+    L(QP) = n_1l_1 + n_2l_2 + ... = \sum_{i}^{}n_il_i  
+$$
+
+\subsubsection*{变折射率介质:}
+$$
+L(QP) = \int_{Q}^{P} n(r) \,dx 
+$$
+
+
+\subsubsection*{光程与相位差和时差的关系}
+
+\insertfigure{picture/guangchengguanxi.png}{示意图}{fig:guangchengguanxi}
+
+
+\begin{enumerate}
+    \item \textbf{相位差与光程的关系}
+    
+    \noindent\hspace*{1.5em} $\mathrm{Q \rightarrow M \rightarrow N \cdots \rightarrow P}$，相位逐步落后；
+    
+    \begin{align*}
+        \varphi(P) - \varphi(Q) &= - \left(\frac{2\pi}{\lambda_1} l_1 + \frac{2\pi}{\lambda_2} l_2 + \cdots + \frac{2\pi}{\lambda_4} l_4 \right) \\
+        &= - \left(\frac{2\pi n_1}{\lambda_0} l_1 + \frac{2\pi n_2}{\lambda_0} l_2 + \cdots + \frac{2\pi n_4}{\lambda_0} l_4 \right) \\
+        &= - \frac{2\pi}{\lambda_0} \sum n_i l_i = - \frac{2\pi}{\lambda_0} L(QP)
+    \end{align*}
+    
+    \noindent\hspace*{1.5em} 即：\boxedmath{$\varphi(P) - \varphi(Q) = - \frac{2\pi}{\lambda_0} L(QP)$}
+    
+    \item \textbf{时差与光程的关系}
+    
+    \begin{align*}
+        t_P - t_Q &= \sum\Delta t_i = \sum \frac{l_i}{v_i} = \sum \frac{n_i l_i}{c} = \frac{1}{c} L(QP)
+    \end{align*}
+    
+    \noindent\hspace*{1.5em} 即：$t_P - t_Q = \frac{L(QP)}{c}$ \quad 或 \quad \boxedmath{$L(QP) = c \cdot t(QP)$}
+
+\end{enumerate}
+
+\vspace{1em}
+
+\noindent 给出光程的又一新定义：\textbf{ 光线经历QP两点的光程等于传播时间乘以真空光速，虽然光线实际上传播于介质中。}
+
+\vspace{1em}
+\subsubsection{费马原理及其数学形式}
+
 % ... 内容接续 ...
 
 
