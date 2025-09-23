@@ -1,81 +1,200 @@
 % !TEX program = xelatex
 % ===============================================================
-% LaTeX 論文模板學習版
-% 說明：每一行控制碼都附有中文註解
-% 建議使用 XeLaTeX 引擎編譯
+% LaTeX 论文模板 - 优化学习版 v2.0
+% 说明：此版本强调了代码的结构化、语义化与排版最佳实践。
+% 建议使用 XeLaTeX 引擎编译，以完美支持中文。
 % ===============================================================
 
-% %%%%%%%%%%%%%%%%%% 1. 前言區 (Preamble) %%%%%%%%%%%%%%%%%%
-% --- 從這裡到 \begin{document} 之前，都屬於前言區 ---
-% --- 主要用來設定整份文件的基本格式與載入功能 ---
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 1. 前言区 (Preamble)
+% --- 文档类型定义与宏包加载 ---
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[12pt]{ctexart} % 定义文件的类型。所有 LaTeX 文件都必须以这个指令开始。
-                                            % [a4paper] 设置纸张为 A4 尺寸，[twocolumn] 设置为双栏排版。
-                                            % {ctexart} 使用 ctexart 这个文件类别，专为排版中文文章设计，art 指的是 article (文章)。
+\documentclass[12pt]{ctexart} % 使用 ctexart 文档类，专为中文排版设计。12pt 为默认字体大小。
 
-% --- 载入各种功能宏包 (Packages) ---
-\usepackage{graphicx}       % 载入宏包，用于插入图片 (\includegraphics)。
-\usepackage{amsmath}        % 载入宏包，美国数学学会 (AMS) 提供的数学公式增强功能。
-\usepackage{amssymb}        % 载入宏包，提供更多数学符号，需与 amsmath 搭配使用。
-\usepackage{siunitx}        % 载入宏包，用于排版带有国际标准单位 (SI) 的数字，格式非常专业。
-\usepackage{xcolor}         % 载入宏包，让您能使用颜色，例如设定文字颜色。
-\usepackage{geometry}       % 载入宏包，方便地设定页面的边界 (margin)。
-\usepackage{abstract}       % 载入宏包，提供自定义摘要 (abstract) 格式的功能。
-\usepackage{cite}           % 载入宏包，美化与管理引用文献的标号，例如将 [1],[2],[3] 合并为 [1-3]。
-\usepackage{hyperref}       % 载入宏包，建立 PDF 文件中的超链接，让目录、引用、网址都可以点击。
+% --- 核心功能宏包 ---
+\usepackage{amsmath}        % 美国数学学会 (AMS) 宏包，提供进阶的数学公式环境。
+\usepackage{amssymb}        % 提供 amsmath 未包含的额外数学符号。
+\usepackage{graphicx}       % 用于插入图片的核心宏包，提供 \includegraphics 命令。
+\usepackage{xcolor}         % 提供颜色支持，可用于文字、背景、表格等。
+\usepackage{setspace}       % 用于灵活调整行距，例如 \onehalfspacing, \doublespacing。
 
-% --- 页面布局设置 (使用 geometry 宏包) ---
-\geometry{                  % 这是 geometry 宏包的设定区块的开始。
-    a4paper,                % 再次确认纸张尺寸为 A4。
-    total={180mm,257mm},    % 设定文字内容区域的总宽度与高度。
-    left=15mm,              % 设定左边界为 15 毫米。
-    top=20mm,               % 设定上边界为 20 毫米。
-}                           % 区块设定的结束。
+% --- 排版与格式设定宏包 ---
+\usepackage{geometry}       % 方便地设定页面边距与版心。
+\usepackage{siunitx}        % 专业地排版带有国际单位 (SI) 的数字与单位。
+\usepackage{abstract}       % 提供摘要格式的自定义功能。
+\usepackage{cite}           % 美化与管理引用文献标号，例如将 [1,2,3] 压缩为 [1-3]。
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=red, urlcolor=cyan]{hyperref} % 建立 PDF 超链接，通常建议放在绝大多数宏包之后加载。
+\usepackage{cleveref}       % 智能引用，可自动识别图、表、公式，生成如 “图 1” 而非仅 “1”。
 
-% --- 超链接设置 (使用 hyperref 宏包) ---
-\hypersetup{                % 这是 hyperref 宏包的设定区块的开始。
-    colorlinks=true,        % 将超链接设定为彩色文字，而不是预设的方框。
-    linkcolor=blue,         % 设定内部链接 (如目录、图表引用) 的颜色为蓝色。
-    filecolor=magenta,      % 设定文件链接的颜色为洋红色。
-    urlcolor=cyan,          % 设定网址链接的颜色为青色。
-    citecolor=red,          % 设定文献引用链接的颜色为红色。
-    pdftitle={A Study on a Novel Nonlinear Optical Crystal}, % 设定 PDF 文件属性中的「标题」。
-    pdfauthor={Author A},   % 设定 PDF 文件属性中的「作者」。
-}                           % 区块设定的结束。
+% --- 页面布局设定 (geometry) ---
+\geometry{
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=30mm,
+    bottom=30mm,
+}
 
-% --- 文件信息定义 (标题、作者、日期) ---
-\title{\huge \bfseries 光学} % 设定整份文件的标题。
-                                            % {\huge \bfseries ...} 是格式指令，\huge 是字体大小(极大)，\bfseries 是字体样式(粗体)。
 
-\author{                    % 设定作者信息。
-    施维圣          
-                        % 手动换行，并增加 1em 的垂直间距 (em 是一个相对长度单位)。
-}                           % 作者信息设定的结束。
 
-\date{\today}               % 设定文件日期。`\today` 这个特殊指令会自动填入编译当天的日期。
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                  文档正文开始
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}            % 文件的正文内容从这里开始，这是 LaTeX 的主体区域。之前都是前言区。
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2. 自定义命令与全局设定
+% --- 为了代码的简洁与一致性 ---
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\maketitle                  % 这是一个非常重要的指令，它会根据前面用 \title, \author, \date 设定的信息，自动产生标题区块。
+% --- 自定义一个用于“定义”的命令 ---
+% #1 代表第一个参数 (术语名称)
+% 使用 \noindent 来避免段首缩进，使其看起来更像一个标题。
+\newcommand{\mydef}[1]{\par\noindent\textbf{#1}:}
 
-% --- 摘要区 ---
-% 摘要内容放在这里... (您提供的代码中省略了摘要内容)
+% --- 自定义图片插入命令 (基础版) ---
+% #1: 图片路径 (例如: picture/image.png)
+% #2: 图片说明 (caption)
+% #3: 引用标签 (label, 无需加 fig: 前缀)
+\newcommand{\insertfigure}[3]{
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{#1}
+        \caption{#2}
+        \label{fig:#3}
+    \end{figure}
+}
+
+\newcommand{\boxedmath}[1]{
+  \fcolorbox{black}{white}{\scalebox{1.3}{#1}}
+}
+
+
+% --- 文档信息 ---
+\title{\bfseries 光学} % 标题内容。字体大小由文档类自动处理，这里只指定粗体。
+\author{施维圣}
+\date{\today}                 % 使用 \today 自动生成编译当天的日期。
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3. 正文区 (Body)
+% --- 所有可见的内容都在这里 ---
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle % 自动生成标题、作者、日期区块。
+
+% --- 摘要区 (如果需要) ---
 % \begin{abstract}
-% ...
+%     这是一个关于几何光学基础原理的摘要...
 % \end{abstract}
 
 % --- 正文章节 ---
-
 \section{几何光学基本原理与成像规律}
 \subsection{费马原理}
-\subsubsection{惠更斯原理 \& 折射率}
+\subsubsection{惠更斯原理与折射率}
+
+% 使用 setspace 提供的环境来设定局部行距，1.5 约等于双倍行高。
+% 2.5 的行距在学术写作中过于宽松，1.5 或 1.8 是更常见的选择。
+\begin{spacing}{1.5}
+
+\mydef{波面 (wave surface)}
+波在同一时刻到达的各点所组成的面。一个波面上各点同时开始振动，具有相同的相位，因此波面又称同相面或等相面。
+
+\mydef{平面波 (plane wave)}
+波面为一系列平行平面的波。
+
+\mydef{球面波 (spherical wave)}
+波面为一系列同心球面的波。
+
+\mydef{波前 (wavefront)}
+指最前沿的波面。
+
+\mydef{波线 (ray)}
+沿着波传播方向的射线。在各向同性的介质中，波线恒垂直于波面。相关示意如图\ref{fig:wave}所示。
+
+\end{spacing}
+
+% --- 图表示例 ---
+% 使用 [htbp] 参数给予 LaTeX 最大的灵活性来放置图片：
+% h: here (这里)
+% t: top (页面顶部)
+% b: bottom (页面底部)
+% p: page (独立一页)
+% 常常使用 [htbp] 或 [tbp] 是最佳实践。
+\begin{figure}[htbp]
+    \centering
+    % 使用 width=\linewidth 的相对宽度可以让图片自适应页宽，比固定 scale 更具弹性。
+    % 例如 width=0.6\textwidth 表示图片宽度为文字区域宽度的 60%。
+    \includegraphics[width=0.5\textwidth]{picture/wave.png}
+    \caption{波前、波面与波线示意图}
+    \label{fig:wave} % 使用 "类型:名称" 的标签格式 (如 fig:, tab:, eq:) 是个好习惯。
+\end{figure}
+
+% --- 使用段落来分隔不同概念，而不是手动空行 ---
+\subsubsection*{惠更斯原理 (Huygens’ Principle)}
+光扰动同时到达的空间曲面称为波面或波前。
+波前上的每点都可以视为一个新的扰动中心，称为“子波源”。
+每个子波源会向四周发出球面\textbf{“次波”(secondary wavelet)}。
+在下一时刻，所有这些次波的公切面（或称为包络面）就构成了新的波前。
+子波源与其次波切点的连线方向，即为该处光线的传播方向。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{picture/huigengsi.png}
+    \caption{惠更斯原理示意图}
+    \label{fig:huigengsi}
+\end{figure}
+
+\subsubsection*{折射定律的导出}
+
+\insertfigure{picture/zheshe.png}{折射定律示意图}{zheshe}
+
+
+首先，我们分析波前从 $ABC$ 传播到 $A'B'C'$ 的过程。如图\ref{fig:zheshe}所示，当波前上的 $A$ 点到达界面时，波前上的 $C$ 点还需要一段时间 $\Delta t$ 才能传播到界面上的 $C'$ 点。这段时间为：
+$$
+\Delta t = \frac{\overline{CC'}}{v_1}
+$$
+
+在相同的时间 $\Delta t$ 内，位于界面上 $A$ 点的子波源，会在介质2中形成一个半径为 $\overline{AA'}$ 的球面次波。其传播的距离为：
+$$
+\overline{AA'} = v_2 \cdot \Delta t = v_2 \frac{\overline{CC'}}{v_1}
+$$
+
+此时，从 $C'$ 点作这个球面次波的切线，切点为 $A'$。根据惠更斯原理，这条切线 $A'C'$ 即为在介质2中新的折射波前。而连接次波中心 $A$ 和切点 $A'$ 的直线 $AA'$，则代表了折射光线的传播方向，其与法线的夹角即为折射角 $i_2$。
+
+接下来，我们在直角三角形 $\triangle AC'C$ 和 $\triangle AC'A'$ 中，可以分别得到入射角和折射角正弦值的几何关系：
+
+\begin{align*}
+\sin i_1 &= \frac{\overline{CC'}}{\overline{AC'}} \\
+\sin i_2 &= \frac{\overline{AA'}}{\overline{AC'}} = \frac{v_2 \cdot \overline{CC'}}{v_1 \cdot \overline{AC'}}
+\end{align*}
+
+
+最后，将上述两式相除，消去公因子 $\overline{CC'}$ 和 $\overline{AC'}$，我们就得到了最终的\textbf{折射定律}:
+
+\begin{gather*}
+\frac{\sin i_1}{\sin i_2} = \frac{v_1}{v_2} = \text{const}
+\end{gather*}
+
+
+这个结果表明，入射角正弦值与折射角正弦值的比率，等于两介质中波速的比率，是一个常数。
+
+定义：
+$$
+    n = \frac{c}{v}
+$$
+则有
+\begin{center}
+    \boxedmath{$n_1\sin i_1 = n_2\sin i_2$}
+\end{center}
 
 
 
 \subsubsection{光程概念及其意义}
+% ... 内容接续 ...
+
 \subsection{成像}
+% ... 内容接续 ...
+
 \subsection{光学仪器}
-\end{document}              % 文件的结束标记。所有在此之后的内容都会被 LaTeX 忽略。
+% ... 内容接续 ...
+
+\end{document} % 文档结束
