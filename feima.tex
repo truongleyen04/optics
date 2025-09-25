@@ -172,7 +172,81 @@ $$
 \noindent 给出光程的又一新定义：\textbf{ 光线经历QP两点的光程等于传播时间乘以真空光速，虽然光线实际上传播于介质中。}
 
 \vspace{1em}
+
 \subsubsection{费马原理及其数学形式}
+
+\mydef{费马原理}光线沿光程为平稳值的路径而传播
+
+\insertfigure{picture/fmshiyitu.png}{费马原理示意图}{fig:fm}
+
+\begin{center}
+    $L(QP) = \int_{Q}^{P} n(r) \,ds \rightarrow $平稳值
+\end{center}
+
+\subsubsection*{平稳值的三种含义}
+
+\begin{itemize}
+    \item 极小值$\rightarrow$常见情况
+    \item 常数$\rightarrow$成像系统的物像关系
+    \item 极大值$\rightarrow$个别现象
+\end{itemize}
+
+积分是路径的泛函，平稳值要求变分为零
+
+\vspace{1em}
+
+即:
+\begin{center}
+    \boxedmath
+    {$
+        \delta \int_{Q}^{P} n(r)\,ds = 0 
+    $
+    \quad
+    或
+    \quad
+    $
+    \delta L(l) = 0
+    $}
+
+\end{center}
+
+\subsubsection{由费马原理导出光学的三大实验定律}
+
+\subsubsection*{反射定律}
+
+\insertfigure{picture/fanshe1.png}{导出反射定律示意图1}{fig:fanshe1}
+\insertfigure{picture/fanshe2.png}{导出反射定律示意图2}{fig:fanshe2}
+
+由\textbf{线段距离最短}可得：
+
+\textbf{当入射角$i$等于出射角$i'$时}，光程最短
+$$
+    i = i'
+$$
+
+\subsubsection*{折射定律}
+
+\insertfigure{picture/zheshe2.png}{导出折射定律示意图}{fig:zheshe}
+
+\begin{itemize}
+    \item[(1)] 折射光线在入射面内，方法和反射定律推导一样。
+    \item[(2)] 入射角和折射角的关系；$Q \rightarrow M \rightarrow P$的光程：
+\end{itemize}
+
+$$ L = n_1 \overline{QM} + n_2 \overline{MP} = n_1 \sqrt{y_1^2 + (x-x_1)^2} + n_2 \sqrt{y_2^2 + (x_2-x)^2} $$
+
+根据费马原理，$\delta L=0$，对$x$的一阶导数等于零：
+
+$$ \frac{dL}{dx} = n_1 \frac{x-x_1}{\sqrt{y_1^2 + (x-x_1)^2}} - n_2 \frac{x_2-x}{\sqrt{y_2^2 + (x_2-x)^2}} = 0 $$
+
+$$ \frac{dL}{dx} = n_1 \frac{\overline{QA}}{\overline{QM}} - n_2 \frac{\overline{PB}}{\overline{PM}} = n_1 \sin i_1 - n_2 \sin i_2 = 0 $$
+
+$$ \Rightarrow n_1 \sin i_1 = n_2 \sin i_2 $$
+
+此即 \textbf{Snell定律}。
+
+\subsubsection{物像等光程性}
+
 
 % ... 内容接续 ...
 
