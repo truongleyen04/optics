@@ -190,6 +190,7 @@ $$
     \item 常数$\rightarrow$成像系统的物像关系
     \item 极大值$\rightarrow$个别现象
 \end{itemize}
+\insertfigure{picture/jdzexample.png}{极大值情况实例}{fig:jdzexample}
 
 积分是路径的泛函，平稳值要求变分为零
 
@@ -247,6 +248,56 @@ $$ \Rightarrow n_1 \sin i_1 = n_2 \sin i_2 $$
 
 \subsubsection{物像等光程性}
 
+\mydef{物像等光程性}物像之间各条光线的光程是相等的。
+
+\insertfigure{picture/dgcx.png}{等光程性示意图}{fig:dgcx}
+
+\begin{center}
+    物点Q $\longrightarrow$ 象点Q' \\
+    同心光束 $\longrightarrow$ 同心光束 \\
+
+    (同心光束的共轭变换)
+\end{center}
+
+
+\bigskip
+
+等光程性是指 $$L(QM_1N_1Q') = L(QM_2N_2Q') = \dots$$
+
+即 $$L(QM_iN_iQ') = \text{const.}$$ 与$i$无关。可取反证法证之。
+
+
+
+\subsubsection*{理想光学系统成像}
+\insertfigure{picture/lxgxxtcx.png}{示意图}{fig:lxgxxtcx}
+
+
+\begin{align*}
+    \text{\textbf{严格等光程}} &\Leftrightarrow \text{\textbf{严格成像,}} \\
+    \text{\textbf{近似等光程}} &\Leftrightarrow \text{\textbf{近似成像,}} \\
+    \text{\textbf{非等光程}} &\Leftrightarrow \text{\textbf{不成像,}}
+\end{align*}
+
+\subsubsection*{虚光程}
+\textbf{虚光程的计算：}\\
+\insertfigure{picture/xgc.png}{虚光程}{fig:xgc}
+
+$$
+L(N_iQ') = n' \cdot \overline{N_iQ'}
+$$
+% 數學公式推導部分
+% 使用 align* 環境來對齊多行公式
+\begin{align*}
+    & L(QM_1N_1) + L(N_1V_1) = L(QM_2N_2) + L(N_2V_2) = \dots \\
+    & L(N_1V_1) = n'(\overline{V_1Q'} - \overline{N_1Q'}), \quad L(N_2V_2) = n'(\overline{V_2Q'} - \overline{N_2Q'}), \quad \overline{V_1Q'} = \overline{V_2Q'} \\
+    & L(QM_1N_1) - L(N_1Q') = L(QM_2N_2) - L(N_2Q') = \dots \\
+    & = L(QM_iN_i) - L(N_iQ') = \dots \\[2ex] % \\[2ex] 增加行間距
+    & -L(N_iQ') = -n' \cdot \overline{N_iQ'} = \underbrace{n'' }_{\text{虛折射率}}\cdot \overline{N_iQ'} = L'(N_iQ') 
+\end{align*}
+
+% 底部結論公式
+\boxedmath{$ L(QM_1N_1) + \textcolor{red}{L'(N_1Q')} = \dots = L(QM_iN_i) + \textcolor{red}{L'(N_iQ')} = \dots$}
+   
 
 % ... 内容接续 ...
 
