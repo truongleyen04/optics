@@ -1,0 +1,107 @@
+\subsection{几何光学成像规律}
+\subsubsection{成像基本概念}
+\insertfigure{picture/6.png}{不同的成像种类}{fig:6}
+\noindent 实(虚)物： 物点发射出发散(会聚)的同心光束。
+
+\noindent 实(虚)像： 像点形成自会聚(发散)的同心光束。
+\subsubsection{共轴球面光具组傍轴成像}
+单个球面的情况下，有：
+\begin{equation}
+    \frac{n}{s} + \frac{n'}{s'} = \frac{n'-n}{r} = \Phi \label{eq:1}
+\end{equation}
+
+$ \Phi$为光焦度
+由于
+\begin{align*}
+f &= \frac{n}{n'-n}r = \frac{n}{\Phi} &
+f' &= \frac{n'}{n'-n}r = \frac{n'}{\Phi}
+\end{align*}
+则可将\eqref{eq:1}化简为：
+$$\frac{f}{s} + \frac{f'}{s'} = 1$$
+
+\subsubsection*{傍轴物点成像和横向放大率}
+\insertfigure{picture/7.png}{物点成像}{fig:7}
+\noindent $\Pi$上所有的点都成像在$\Pi'$上(当然只限于\textbf{\color{red}傍轴区域})。
+
+\noindent 这样一对由共轭点组成的平面叫做\textbf{\color{red}共轭平面}，
+
+\noindent 其中$\Pi$叫\textbf{\color{red}物平面}，$\Pi'$叫\textbf{\color{red}像平面}。
+
+\noindent 注意：
+\noindent 若$P$ (或$P'$)在光轴上方， $y$ (或$y'$)$>0$;
+
+\noindent \quad \quad \quad 在光轴下方， $y$ (或$y'$)$<0$。 % \quad 用于模拟图片中的缩进效果
+
+\vspace{1em}
+定义横向放大率为 $V = y'/y$
+
+可导出：
+$$V = - \frac{ns'}{n's}$$
+
+对于：
+\insertfigure{picture/8.png}{多个同轴球面}{fig:8}
+
+有$V = V_1 V_2 V_3 \dots$
+
+\subsubsection*{拉格朗日-亥姆霍兹定理}
+\insertfigure{picture/9.png}{示意图}{fig:9}
+在傍轴条件下，
+\begin{center}
+    \boxedmath{$ynu = y'n'u'$}
+\end{center}
+推广到多个共轴球面系统，
+\begin{center}
+    \boxedmath{$ynu = y'n'u' = y''n''u'' = \dots$}
+\end{center}
+\subsubsection{薄透镜及透镜组成像}
+\insertfigure{picture/10.png}{薄透镜}{fig:10}
+薄透镜要求：
+$$d \ll f, f', s, s'$$
+对于薄透镜的前后两个面，有
+\begin{align*}
+    \Sigma_1: \quad \frac{f_1}{s_1} + \frac{f'_1}{s'_1} &= 1 &
+    \Sigma_2: \quad \frac{f_2}{s_2} + \frac{f'_2}{s'_2} &= 1
+\end{align*}
+令
+\begin{align*}
+  f &= \frac{f_1 f_2}{f'_1 + f_2}, &
+f' &= \frac{f'_1 f'_2}{f'_1 + f_2} &
+\end{align*}
+两式合并，可得
+\begin{center}
+    \boxedmath{$ \frac{f}{s} + \frac{f'}{s'} = 1 $}
+\end{center}
+
+一般情况下，$n = n' \approx 1$
+则
+$$ 
+\Phi = \frac{n_L - n}{r_1} + \frac{n' - n_L}{r_2} = (n_L - 1)\left(\frac{1}{r_1} - \frac{1}{r_2}\right) 
+$$
+而
+$$
+\left\{
+\begin{aligned}
+f &= \frac{n}{\frac{n_L - n}{r_1} + \frac{n' - n_L}{r_2}} = \frac{n}{\Phi} \\
+f' &= \frac{n'}{\frac{n_L - n}{r_1} + \frac{n' - n_L}{r_2}} = \frac{n'}{\Phi}
+\end{aligned}
+\right.
+$$
+则
+$$ f = \frac{n}{\Phi} = \frac{n'}{\Phi} = f' = \frac{1}{(n_L - 1)\left(\frac{1}{r_1} - \frac{1}{r_2}\right)} $$
+此公式被称为\textbf{磨镜者公式}
+\vspace{1em}
+透镜度数和光焦度的关系为
+$$ \text{度数} = P \times 100 $$
+\subsubsection*{牛顿公式}
+\insertfigure{picture/11.png}{牛顿公式示意图}{fig:11}
+
+引入$x$
+$$ x = s - f, \quad x' = s' - f' $$
+推导可得
+$$ V = -\frac{s'}{s} = -\frac{f'}{x} = -\frac{f}{x'} = -\frac{x'}{f'} = -\frac{x}{f} $$
+这便是\textbf{薄透镜横向放大率公式}。
+\vspace{1em}
+\subsubsection*{密接透镜组}
+
+
+
