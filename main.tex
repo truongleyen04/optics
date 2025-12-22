@@ -24,7 +24,7 @@
     top=30mm,
     bottom=30mm,
 }
-
+\setlength{\parindent}{0pt}
 
 
 
@@ -50,7 +50,8 @@
         \label{fig:#3}
     \end{figure}
 }
-
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}} 
 \newcommand{\boxedmath}[1]{
   \fcolorbox{black}{white}{\scalebox{1.3}{#1}}
 }
@@ -65,9 +66,9 @@
 
 \begin{document}
 \maketitle
-\include{feima}
-\include{chengxiang}
-\include{guangxueyiqi}
+\input{jihe/feima}
+\input{jihe/chengxiang}
+\input{jihe/guangxueyiqi}
 
-
+\input{bodong/ganshe}
 \end{document} % 文档结束

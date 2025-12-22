@@ -1,0 +1,230 @@
+\section{波动光学通论 (General Wave Optics)}
+
+\begin{spacing}{1.5}
+
+\subsection{光的电磁理论基础}
+\mydef{麦克斯韦方程组与波动方程}
+光是电磁波。在无源（$\rho=0, \vec{J}=0$）、线性、各向同性、均匀介质中，电场 $\vec{E}$ 和磁场 $\vec{B}$ 均满足矢量波动方程：
+\begin{equation}
+    \nabla^2 \vec{E} - \mu\varepsilon \frac{\partial^2 \vec{E}}{\partial t^2} = 0
+\end{equation}
+相速度 $v = 1/\sqrt{\mu\varepsilon}$。真空中 $c \approx \SI{3e8}{m/s}$。
+折射率 $n = c/v = \sqrt{\varepsilon_r \mu_r} \approx \sqrt{\varepsilon_r}$（大多数光学介质中 $\mu_r \approx 1$）。
+
+\mydef{光强 (Intensity)}
+光强定义为坡印廷矢量 (Poynting Vector) $\vec{S} = \vec{E} \times \vec{H}$ 大小的物理平均值。在同一种介质中，光强正比于电场振幅的平方：
+\begin{equation}
+    I \propto \langle |\vec{E}|^2 \rangle
+\end{equation}
+
+\mydef{标量波近似 (Scalar Approximation)}
+当光波在均匀介质中传播，且不涉及边界上的偏振转换（如菲涅耳反射公式）或各向异性介质（如晶体双折射）时，可忽略电场的矢量性，用标量函数 $U(\vec{r}, t)$ 描述光场。
+
+\subsection{定态光波与复振幅}
+钟锡华教材核心思想：\textbf{用复数运算简化波动分析}。
+对于单色光（角频率 $\omega$），实数波函数 $U(\vec{r}, t) = A(\vec{r}) \cos[\omega t - \varphi(\vec{r})]$ 可写为：
+\begin{equation}
+    U(\vec{r}, t) = \operatorname{Re} [\tilde{U}(\vec{r}) e^{\ii \omega t}]
+\end{equation}
+其中 \textbf{复振幅 (Complex Amplitude)} $\tilde{U}(\vec{r})$ 定义为：
+\begin{equation}
+    \tilde{U}(\vec{r}) = A(\vec{r}) e^{-\ii \varphi(\vec{r})}
+\end{equation}
+复振幅满足不含时的 \textbf{亥姆霍兹方程 (Helmholtz Equation)}：
+\begin{equation}
+    \nabla^2 \tilde{U} + k^2 \tilde{U} = 0, \quad k = \frac{n\omega}{c} = \frac{2\pi}{\lambda}
+\end{equation}
+
+\subsection{典型光波及其复振幅}
+\begin{enumerate}
+    \item \textbf{平面波}：传播方向为 $\vec{k}$。
+    $$ \tilde{U}(\vec{r}) = A e^{-\ii \vec{k} \cdot \vec{r}} $$
+    等相面方程：$\vec{k} \cdot \vec{r} = \text{const}$（平面）。
+    
+    \item \textbf{球面波}：从点源发散。
+    $$ \tilde{U}(r) = \frac{A}{r} e^{-\ii kr} $$
+    振幅 $A/r$ 随距离衰减，能量守恒（$I \propto 1/r^2$）。
+    \textbf{傍轴近似}：在距离 $z$ 远处，球面波因子 $e^{-\ii kr} \approx e^{-\ii k z} e^{-\ii \frac{k}{2z}(x^2+y^2)}$，这在衍射积分中非常重要。
+\end{enumerate}
+
+\subsection{波动传播的重要近似条件与模型}
+\mydef{傍轴条件 (Paraxial Condition)}
+当光线传播方向与光轴（设为 $z$ 轴）的夹角 $\theta$ 很小（$\theta \ll 1$ rad）时，满足傍轴条件。
+\begin{itemize}
+    \item \textbf{几何近似}：$\sin\theta \approx \tan\theta \approx \theta$，$\cos\theta \approx 1 - \theta^2/2$。
+    \item \textbf{相位近似}：对于球面波传播距离 $r = \sqrt{z^2 + x^2 + y^2}$，泰勒展开保留至二次项：$r \approx z + \frac{x^2+y^2}{2z}$。该近似要求高阶相位项带来的误差远小于 $\pi$，即 $k \frac{(x^2+y^2)^2}{8z^3} \ll \pi$。
+    \item \textbf{物理意义}：在傍轴条件下，球面波可近似视为一个带有\textbf{二次曲面相位因子}的平面波。
+\end{itemize}
+
+\mydef{远场条件 (Far-field Condition)}
+通常指观察距离 $z$ 远大于波源或孔径尺寸 $D$ 的平方与波长的比值的情况。
+\begin{itemize}
+    \item \textbf{判据}：$z \gg \frac{D^2}{\lambda}$（或定义菲涅耳数 $N_F = \frac{D^2}{\lambda z} \ll 1$）。
+    \item \textbf{物理意义}：在远场区域，波源各点发出的子波到达观察点时，其光程差主要由线性项决定，二次相位项 $\frac{k(x^2+y^2)}{2z}$ 趋于常数或可忽略。此时球面波波前在观察范围内非常平坦，局部可视为\textbf{平面波}。这也是\textbf{夫琅禾费衍射}成立的前提。
+\end{itemize}
+
+\mydef{小角度干涉条件 (Small-angle Interference Condition)}
+当两束相干光的传播方向之间的夹角 $\alpha$ 很小时（$\alpha \ll 1$）：
+\begin{itemize}
+    \item \textbf{矢量近似}：严格的干涉项含 $\vec{E}_1 \cdot \vec{E}_2 = E_1 E_2 \cos \alpha$。当 $\alpha \to 0$ 时，$\cos \alpha \to 1$。
+    \item \textbf{结论}：只要干涉角足够小，即使不考虑矢量的偏振方向（假设它们大体同向），\textbf{标量叠加原理}也是高度精确的。
+\end{itemize}
+
+\mydef{自然光的分解模型 (Decomposition Model of Natural Light)}
+自然光是大量原子随机发光的集合，宏观上无固定偏振态，但在处理干涉时常采用以下模型：
+\begin{itemize}
+    \item \textbf{正交分解}：可将自然光等效为两束振动方向互相垂直（$x$ 和 $y$）、振幅相等（$A_x=A_y$）且\textbf{互不相干}的线偏振光的叠加。
+    \item \textbf{光强关系}：$I_{\text{nat}} = I_x + I_y = \frac{1}{2}I_0 + \frac{1}{2}I_0$。
+    \item \textbf{干涉表现}：在杨氏双缝或薄膜干涉中，$x$ 分量与自身的副本干涉，$y$ 分量与自身的副本干涉。由于两者不相干，总光强分布是两组干涉条纹强度的简单叠加。
+\end{itemize}
+
+\end{spacing}
+
+\section{光的干涉 (Interference)}
+
+\subsection{波的叠加与相干条件}
+\begin{spacing}{1.5}
+\mydef{叠加原理}
+$\tilde{U} = \tilde{U}_1 + \tilde{U}_2$。总光强 $I = \tilde{U}\tilde{U}^*$：
+\begin{equation}
+    I = I_1 + I_2 + 2\sqrt{I_1 I_2} \cos \delta
+\end{equation}
+干涉项 $J_{12} = 2\sqrt{I_1 I_2} \cos \delta$，其中 $\delta(\vec{r}) = \varphi_2 - \varphi_1$ 为相位差。
+
+\mydef{相干条件 (Coherence Conditions)}
+为了观察到稳定的干涉图样（$J_{12}$ 不随时间平均为零）：
+\begin{itemize}
+    \item \textbf{频率相同} ($\omega_1 = \omega_2$)：否则产生拍频，时间平均光强无干涉项。
+    \item \textbf{振动方向平行}：$\vec{E}_1 \cdot \vec{E}_2 \neq 0$（菲涅耳-阿拉戈定律）。
+    \item \textbf{相位差恒定}：$\delta$ 不随时间随机跳变。
+\end{itemize}
+
+\mydef{条纹可见度 (Visibility/Contrast)}
+描述干涉条纹的清晰程度：
+\begin{equation}
+    V = \frac{I_{\max} - I_{\min}}{I_{\max} + I_{\min}} = \frac{2\sqrt{I_1 I_2}}{I_1 + I_2} |\gamma_{12}|
+\end{equation}
+当 $I_1 = I_2$ 且光源完全相干（$|\gamma_{12}|=1$）时，$V=1$（最佳）。
+
+\mydef{驻波 (Standing Wave)}
+两列振幅相同、相向传播的相干波叠加形成驻波。维纳 (Wiener) 实验证明了光波中的感光作用主要是由**电场矢量**引起的（波腹处感光最强）。
+\end{spacing}
+
+\subsection{分波前干涉 (Wavefront Splitting)}
+物理上将点光源的波前分割为两部分，分别通过不同路径后汇聚。
+
+\subsubsection{杨氏双缝干涉 (Young's Experiment)}
+\textbf{装置参数}：缝间距 $d$，屏距 $D$，波长 $\lambda$。
+\textbf{光程差} $\Delta \approx d \frac{x}{D}$。
+\textbf{光强分布}：
+\begin{equation}
+    I(x) = 4I_0 \cos^2 \left( \frac{\pi d x}{D \lambda} \right)
+\end{equation}
+\textbf{特征}：
+\begin{itemize}
+    \item 亮纹：$x_k = k \frac{D\lambda}{d}$；暗纹：$x_k = (k+0.5)\frac{D\lambda}{d}$。
+    \item 条纹等间距 $\Delta x = \frac{D\lambda}{d}$。
+\end{itemize}
+
+\subsubsection{其他分波前装置}
+\begin{itemize}
+    \item \textbf{菲涅耳双棱镜}：利用折射产生两个虚光源。
+    \item \textbf{菲涅耳双面镜}：利用反射产生两个虚光源。
+    \item \textbf{洛埃镜 (Lloyd's Mirror)}：利用直射光与反射光干涉。
+    \textbf{重要现象}：在镜面边缘接触点处（光程差趋于0），出现**暗条纹**。这直接证明了光在光密介质表面反射时存在**半波损失**（相位突变 $\pi$）。
+\end{itemize}
+
+\subsubsection{空间相干性 (Spatial Coherence)}
+实际光源具有宽度 $b$。
+\begin{itemize}
+    \item 光源上不同点发出的波列是不相干的，产生的干涉条纹在屏上发生位移。
+    \item 当边缘点产生的条纹相对中心点位移达 $\Delta x / 2$ 时，条纹完全模糊。
+\end{itemize}
+\textbf{相干极限}：
+\begin{equation}
+    b \cdot \frac{d}{D} \le \lambda \implies b \cdot \theta_s \le \lambda
+\end{equation}
+其中 $\theta_s \approx d/D$ 为干涉孔径角。
+\textbf{结论}：光源宽度越窄，允许的干涉孔径角越大，空间相干性越好。
+
+\subsection{分振幅干涉 (Amplitude Splitting)}
+
+\subsubsection{薄膜干涉基本原理}
+\textbf{模型}：折射率 $n_2$，厚度 $h$ 的薄膜，置于 $n_1$ 和 $n_3$ 之间。
+\textbf{光程差公式}：
+\begin{equation}
+    \Delta = 2 n_2 h \cos i_2 + \frac{\lambda}{2} (\text{若存在半波损失})
+\end{equation}
+\textbf{半波损失判据}：
+当 $n_1 < n_2 < n_3$ 或 $n_1 > n_2 > n_3$ 时，上下表面反射性质相同，无附加项。
+当 $n_1 < n_2$ 且 $n_2 > n_3$（如空气中肥皂膜），仅上表面有半波损失，需加 $\lambda/2$。
+
+\subsubsection{等倾干涉 (Equal Inclination)}
+\textbf{条件}：$h$ 均匀，面光源。
+\textbf{规律}：$\Delta$ 仅随入射角 $i$ (或折射角 $i_2$) 变化。
+\textbf{图样}：定域于无穷远（焦平面）的同心圆环。
+\textbf{吞吐现象}：膜厚 $h$ 增加，光程差增大，中心条纹级次冒出（“吐”），条纹整体外扩变密。
+
+\subsubsection{等厚干涉 (Equal Thickness)}
+\textbf{条件}：$h$ 不均匀，平行光（或准平行光）入射。
+\textbf{规律}：$\Delta$ 仅随厚度 $h$ 变化。条纹描绘了膜厚的等高线。
+\textbf{定域}：薄膜表面附近。
+
+\textbf{1. 劈尖 (Wedge)}
+条纹间距 $L = \frac{\lambda}{2n \sin \alpha} \approx \frac{\lambda}{2n\alpha}$。
+应用：检测表面平整度（条纹弯曲度）、测量微小直径。
+
+\textbf{2. 牛顿环 (Newton's Rings)}
+光程差 $\Delta = 2h + \lambda/2 \approx r^2/R + \lambda/2$。
+\begin{itemize}
+    \item \textbf{反射光}中心为暗斑（接触点 $h=0, \Delta=\lambda/2$）。
+    \item \textbf{透射光}中心为亮斑（无半波损失）。
+\end{itemize}
+
+\subsubsection{光学薄膜应用}
+\begin{itemize}
+    \item \textbf{增透膜 (Anti-reflection Coating)}：利用干涉相消。单层膜条件：$n_{膜}h = \lambda/4$, $n_{膜} = \sqrt{n_{基}}$。
+    \item \textbf{高反膜 (High-reflection Coating)}：利用干涉相长。多层介质膜堆叠。
+\end{itemize}
+
+\subsection{迈克耳孙干涉仪与时间相干性}
+
+\subsubsection{仪器结构与原理}
+利用分光板 $G_1$ 分光。补偿板 $G_2$ 保证两臂玻璃光程相等，使仪器能用于白光干涉。
+等效为空气层厚度 $d$ 的薄膜干涉。
+\begin{itemize}
+    \item $M_1, M_2$ 严格垂直 $\to$ 等倾干涉（圆环）。
+    \item $M_1, M_2$ 有微小倾角 $\to$ 等厚干涉（直条纹，定域在楔形表面）。
+\end{itemize}
+
+\subsubsection{时间相干性 (Temporal Coherence)}
+实际光源非单色（谱宽 $\Delta \nu$ 或 $\Delta \lambda$）。
+\textbf{波列长度}：原子发光过程持续时间有限（约 $\SI{e-8}{s}$），形成有限长度波列。
+\textbf{相干长度} $L_c$：能够发生干涉的最大光程差。
+\begin{equation}
+    L_c \approx \frac{c}{\Delta \nu} = \frac{\lambda^2}{\Delta \lambda}
+\end{equation}
+\textbf{白光干涉}：由于白光 $\Delta \lambda$ 很大，$L_c$ 极短（仅几微米）。仅在零级条纹附近（$\Delta \approx 0$）可见彩色条纹，中心为黑色（半波损失）。常用于确定“零光程差”位置。
+
+\subsection{多光束干涉 (Multi-beam Interference)}
+
+\subsubsection{法布里-珀罗 (Fabry-Perot) 干涉仪}
+由两块平行的高反射率（$R \to 1$）平板组成。
+\textbf{原理}：入射光在腔内多次反射，形成振幅递减、相位等差的无穷多束光叠加。
+
+\subsubsection{艾里公式 (Airy Formula)}
+透射光强 $I_T$ 随相位差 $\delta = \frac{4\pi n h \cos i}{\lambda}$ 的分布：
+\begin{equation}
+    I_T = I_{\max} \frac{1}{1 + F \sin^2 (\delta/2)}
+\end{equation}
+\textbf{精细度系数 (Coefficient of Finesse)}：$F = \frac{4R}{(1-R)^2}$。
+\begin{itemize}
+    \item $R$ 越大，$F$ 越极大，条纹极其细锐。
+    \item 半高全宽 $\varepsilon = 4/\sqrt{F}$。
+\end{itemize}
+
+\subsubsection{重要应用参数}
+\begin{itemize}
+    \item \textbf{自由光谱范围 (Free Spectral Range, FSR)}：相邻两个干涉级次之间的波长差。$\Delta \lambda_{fsr} \approx \frac{\lambda^2}{2nh}$。
+    \item \textbf{分辨本领 (Resolving Power)}：$\mathcal{R} = \frac{\lambda}{\delta \lambda} = k \mathcal{N}$，其中 $\mathcal{N}$ 为有效光束数，正比于精细度 $\mathcal{F} = \frac{\pi\sqrt{F}}{2}$。
+\end{itemize}
