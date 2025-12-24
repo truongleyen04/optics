@@ -15,7 +15,7 @@
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=red, urlcolor=cyan]{hyperref} % 建立 PDF 超链接，通常建议放在绝大多数宏包之后加载。
 \usepackage{cleveref}       % 智能引用，可自动识别图、表、公式，生成如 “图 1” 而非仅 “1”。
 \usepackage{float}
-
+\usepackage{todonotes}
 % --- 页面布局设定 (geometry) ---
 \geometry{
     a4paper,
@@ -46,8 +46,6 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\textwidth]{#1}
-        \caption{#2}
-        \label{fig:#3}
     \end{figure}
 }
 \newcommand{\dd}{\mathrm{d}}
@@ -87,4 +85,5 @@
 \input{bodong/foulier}
 \input{bodong/quanxi.tex}
 \input{bodong/jingti.tex}
+
 \end{document} % 文档结束
