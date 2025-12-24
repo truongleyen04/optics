@@ -1,0 +1,121 @@
+\section{典型干涉装置 (Interferometers)}
+
+除了前述的杨氏双缝（分波前）和薄膜干涉（分振幅），还有几种重要的干涉仪在现代光学中应用广泛。
+
+\subsection{迈克耳孙干涉仪 (Michelson Interferometer)}
+\begin{itemize}
+    \item \textbf{结构}：分光板 $G_1$ 将光束分为互相垂直的两臂，经反射镜 $M_1, M_2$ 反射后汇聚。
+    \item \textbf{特点}：两臂完全分离，可以独立调节光程差。
+    \item \textbf{应用}：
+        \begin{itemize}
+            \item 测量长度和微小位移。
+            \item \textbf{傅里叶变换光谱仪 (FTS)}：通过测量干涉图样随光程差的变化（干涉图），经傅里叶变换得到光源的光谱分布。
+        \end{itemize}
+\end{itemize}
+
+\subsection{马赫-曾德尔干涉仪 (Mach-Zehnder Interferometer)}
+\begin{itemize}
+    \item \textbf{结构}：利用两个分光板和两个全反射镜，使两束光在空间上\textbf{单向传输}且分离较远，最后汇聚。
+    \item \textbf{特点}：工作空间大，被测物体仅置于其中一臂，不重叠光路。
+    \item \textbf{应用}：广泛用于空气动力学流场显示（如风洞实验）、等离子体诊断及透明相位物体的折射率分布测量。
+\end{itemize}
+
+\subsection{萨格纳克干涉仪 (Sagnac Interferometer)}
+\begin{itemize}
+    \item \textbf{结构}：分光后的两束光沿同一闭合光路\textbf{反向旋转}传播，最后汇聚干涉。
+    \item \textbf{共光路 (Common-path)}：两束光经过相同的光学元件，对抗震动和环境干扰能力极强。
+    \item \textbf{萨格纳克效应}：当干涉仪整体相对于惯性空间旋转时，顺时针和逆时针传播的光产生相位差：
+    \begin{equation}
+        \Delta \varphi = \frac{4\pi \mathcal{A} \Omega}{\lambda c}
+    \end{equation}
+    其中 $\mathcal{A}$ 为环路面积，$\Omega$ 为旋转角速度。
+    \item \textbf{应用}：光纤陀螺仪 (FOG)、激光陀螺仪，用于惯性导航。
+\end{itemize}
+
+\section{光场的时空相干性 (Coherence of Light Fields)}
+
+干涉的本质是**相关性 (Correlation)**。实际光场是随机涨落的，必须用统计光学理论描述。
+
+\subsection{互相干函数 (Mutual Coherence Function)}
+设光场中两点 $\vec{r}_1, \vec{r}_2$ 在时刻 $t$ 和 $t+\tau$ 的复振幅分别为 $U(\vec{r}_1, t)$ 和 $U(\vec{r}_2, t+\tau)$。
+定义**互相干函数** $\Gamma_{12}(\tau)$ 为两点光场的互相关：
+\begin{equation}
+    \Gamma_{12}(\tau) = \langle U(\vec{r}_1, t) U^*(\vec{r}_2, t+\tau) \rangle = \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^{T} U(\vec{r}_1, t) U^*(\vec{r}_2, t+\tau) \dd t
+\end{equation}
+定义归一化的**复相干度 (Complex Degree of Coherence)**：
+\begin{equation}
+    \gamma_{12}(\tau) = \frac{\Gamma_{12}(\tau)}{\sqrt{\Gamma_{11}(0) \Gamma_{22}(0)}} = \frac{\Gamma_{12}(\tau)}{\sqrt{I_1 I_2}}
+\end{equation}
+\textbf{一般干涉定律}：
+\begin{equation}
+    I = I_1 + I_2 + 2\sqrt{I_1 I_2} |\gamma_{12}(\tau)| \cos[\alpha_{12}(\tau) - \delta]
+\end{equation}
+其中条纹可见度 $V = |\gamma_{12}(\tau)|$（设 $I_1=I_2$）。
+
+\subsection{时间相干性 (Temporal Coherence)}
+只考虑同一点 $\vec{r}$ 在不同时刻的相关性，即 $\vec{r}_1 = \vec{r}_2$。
+\mydef{物理根源}
+光源的非单色性（频谱宽度 $\Delta \nu$）。
+
+\mydef{自相干函数与功率谱密度}
+根据**维纳-欣钦定理 (Wiener-Khinchin Theorem)**，光场的自相干函数 $\Gamma(\tau)$ 与其功率谱密度 $S(\nu)$ 构成傅里叶变换对：
+\begin{equation}
+    \Gamma(\tau) \Longleftrightarrow S(\nu)
+\end{equation}
+这意味着：\textbf{光谱越窄（单色性越好），相干时间越长}。
+
+\mydef{相干时间与相干长度}
+\begin{itemize}
+    \item \textbf{相干时间} $\tau_c \approx 1 / \Delta \nu$。
+    \item \textbf{相干长度} $L_c = c \tau_c \approx \lambda^2 / \Delta \lambda$。
+\end{itemize}
+
+\subsection{空间相干性 (Spatial Coherence)}
+只考虑同一时刻 $\tau=0$ 不同空间点 $\vec{r}_1, \vec{r}_2$ 的相关性。
+\mydef{物理根源}
+光源的扩展线度（非点光源）。
+
+\mydef{范西泰特-泽尼克定理 (Van Cittert-Zernike Theorem)}
+对于非相干扩展光源，其远场照明区域的复相干度 $\gamma_{12}(0)$ 等于光源强度分布的归一化傅里叶变换。
+简单推论：对于直径为 $b$ 的圆盘光源，在距离 $R$ 处，两个横向间距为 $d$ 的小孔处的相干度为：
+\begin{equation}
+    |\gamma_{12}(0)| = \left| \frac{2 J_1(u)}{u} \right|, \quad u = \frac{\pi b d}{\lambda R}
+\end{equation}
+其中 $J_1$ 为一阶贝塞尔函数。
+\textbf{相干面积}：相干度下降到一定值（如 0.88）的空间范围。
+$$ \text{相干孔径角} \, \theta_c \approx \frac{\lambda}{b} $$
+
+\section{激光 (Lasers)}
+
+激光 (LASER) 是 "Light Amplification by Stimulated Emission of Radiation" 的缩写。
+
+\subsection{激光产生的三个条件}
+\begin{enumerate}
+    \item \textbf{受激辐射 (Stimulated Emission)}：
+    在外来光子诱发下，处于高能级 $E_2$ 的原子跃迁到低能级 $E_1$，发出一口模一样（同频率、同相位、同偏振、同方向）的光子。
+    \item \textbf{粒子数反转 (Population Inversion)}：
+    必须使得高能级粒子数 $N_2 > N_1$（玻尔兹曼分布通常 $N_2 < N_1$），使受激辐射超过受激吸收。需借助泵浦源（光、电等）激励。
+    \item \textbf{光学谐振腔 (Optical Resonator)}：
+    \begin{itemize}
+        \item 提供正反馈：光在腔内往返放大。
+        \item 频率选择：满足驻波条件 $L = q \frac{\lambda}{2}$ 的频率才能振荡。
+        \item 方向选择：只有沿轴向传播的光才能维持。
+    \end{itemize}
+\end{enumerate}
+
+\subsection{激光的特性}
+\begin{enumerate}
+    \item \textbf{单色性好}：时间相干性极高，线宽极窄（可达 $\SI{e-8}{nm}$ 甚至更低）。
+    \item \textbf{方向性好}：空间相干性好，发散角小（衍射极限量级）。
+    \item \textbf{亮度极高}：单位面积、单位立体角内的光功率极大。
+    \item \textbf{相干性强}：同时具备极高的时间相干性和空间相干性，体积相干区大。
+\end{enumerate}
+
+\subsection{纵模与横模}
+\begin{itemize}
+    \item \textbf{纵模 (Longitudinal Modes)}：
+    由腔长 $L$ 决定的轴向驻波形式。频率间隔 $\Delta \nu = c / 2nL$。单纵模激光对应极好的单色性。
+    \item \textbf{横模 (Transverse Modes)}：
+    光场在横截面上的振幅分布，通常用 TEM$_{mn}$ 表示。
+    TEM$_{00}$ 模（基模）：光强呈高斯分布（Gaussian Beam），发散角最小，聚焦光斑最小。
+\end{itemize}

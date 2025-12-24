@@ -1,0 +1,121 @@
+\section{二维傅里叶变换 (Two-Dimensional Fourier Transform)}
+
+在波动光学中，空间复振幅分布 $U(x, y)$ 与其空间频谱 $\mathcal{F}\{U\}$ 构成傅里叶变换对。这揭示了光场在**空域 (Space Domain)** 和**频域 (Frequency Domain)** 的对偶关系。
+
+\subsection{定义与存在条件}
+设 $f(x, y)$ 为空间域函数，$u, v$ 为空间频率变量（单位：$\text{mm}^{-1}$）。
+\mydef{正变换 (Forward Transform)}
+\begin{equation}
+    F(u, v) = \mathcal{F}\{f(x, y)\} = \iint_{-\infty}^{\infty} f(x, y) e^{-\ii 2\pi (ux + vy)} \dd x \dd y
+\end{equation}
+
+\mydef{逆变换 (Inverse Transform)}
+\begin{equation}
+    f(x, y) = \mathcal{F}^{-1}\{F(u, v)\} = \iint_{-\infty}^{\infty} F(u, v) e^{\ii 2\pi (ux + vy)} \dd u \dd v
+\end{equation}
+
+\textbf{物理意义}：逆变换公式表明，任意复杂的波场 $f(x, y)$ 都可以看作是无穷多个不同方向、不同振幅和相位的**平面波** $e^{\ii 2\pi (ux + vy)}$ 的线性叠加。$F(u, v)$ 即为这些平面波的复振幅权重（角谱）。
+
+\section{常用函数及其频谱 (Common Functions)}
+
+钟锡华教材非常强调对这几个“积木”函数的熟练掌握，它们是分析复杂光学系统的基础。
+
+\subsection{矩形函数 (Rectangle Function)}
+定义：$\rect(x) = \begin{cases} 1, & |x| < 1/2 \\ 0, & |x| > 1/2 \end{cases}$
+\begin{itemize}
+    \item \textbf{二维矩孔}：$f(x, y) = \rect(\frac{x}{a}) \rect(\frac{y}{b})$
+    \item \textbf{频谱}：$F(u, v) = |ab| \sinc(au) \sinc(bv)$
+    \item \textbf{注}：钟书定义 $\sinc(x) = \frac{\sin(\pi x)}{\pi x}$。
+\end{itemize}
+
+\subsection{圆域函数 (Circle Function)}
+定义：$\circfunc(r) = \begin{cases} 1, & r < 1 \\ 0, & r > 1 \end{cases}$，其中 $r = \sqrt{x^2+y^2}$。
+\begin{itemize}
+    \item \textbf{二维圆孔}：$f(x, y) = \circfunc(\frac{\sqrt{x^2+y^2}}{a})$
+    \item \textbf{频谱}：$F(\rho) = |a|^2 \frac{J_1(2\pi a \rho)}{a \rho}$，其中 $\rho = \sqrt{u^2+v^2}$。
+    \item 这是艾里斑强度的振幅基础。
+\end{itemize}
+
+\subsection{狄拉克 $\delta$ 函数 (Delta Function)}
+\mydef{筛选性质}
+$\int_{-\infty}^{\infty} f(x) \delta(x-x_0) \dd x = f(x_0)$。
+\begin{itemize}
+    \item $\mathcal{F}\{\delta(x, y)\} = 1$ （点源的频谱是均匀的平面波谱）。
+    \item $\mathcal{F}\{1\} = \delta(u, v)$ （均匀平面波对应单一空间频率）。
+\end{itemize}
+
+\subsection{梳状函数 (Comb Function)}
+定义：$\comb(x) = \sum_{n=-\infty}^{\infty} \delta(x-n)$。
+\begin{itemize}
+    \item \textbf{性质}：$\mathcal{F}\{\comb(x)\} = \comb(u)$。梳状函数的傅里叶变换仍是梳状函数。
+    \item \textbf{应用}：描述光栅、采样过程。
+\end{itemize}
+
+\section{基本定理与卷积 (Basic Theorems)}
+
+\subsection{位移定理 (Shift Theorem)}
+\begin{itemize}
+    \item \textbf{空域位移} $\leftrightarrow$ \textbf{频域线性相移}：
+    $$ f(x-x_0, y-y_0) \Longleftrightarrow F(u, v) e^{-\ii 2\pi (u x_0 + v y_0)} $$
+    \item \textbf{频域位移} $\leftrightarrow$ \textbf{空域线性相移}：
+    $$ f(x, y) e^{\ii 2\pi (u_0 x + v_0 y)} \Longleftrightarrow F(u-u_0, v-v_0) $$
+    这是**斜入射**照明分析的基础。
+\end{itemize}
+
+\subsection{卷积定理 (Convolution Theorem)}
+定义卷积：$g(x, y) = f(x, y) * h(x, y) = \iint f(\xi, \eta) h(x-\xi, y-\eta) \dd \xi \dd \eta$。
+\begin{itemize}
+    \item \textbf{时域卷积} $\leftrightarrow$ \textbf{频域乘积}：
+    $$ \mathcal{F}\{f * h\} = \mathcal{F}\{f\} \cdot \mathcal{F}\{h\} $$
+    这构成了**线性系统理论**的基础：输出 = 输入 * 脉冲响应 $\implies$ 输出频谱 = 输入频谱 $\cdot$ 传递函数。
+\end{itemize}
+
+\subsection{巴塞伐尔定理 (Parseval's Theorem)}
+能量守恒在空域和频域的体现：
+$$ \iint |f(x, y)|^2 \dd x \dd y = \iint |F(u, v)|^2 \dd u \dd v $$
+
+\section{相因子分析 (Phase Factor Analysis)}
+
+这是本章的精华。在傍轴光学中，光场的变换主要体现为相位的调制。钟锡华老师将复杂的衍射积分简化为对两种核心相因子的操作。
+
+\subsection{线性相因子 (Linear Phase Factor)}
+形式：$e^{\ii 2\pi u_0 x}$ 或 $e^{\ii k x \sin \theta}$。
+\begin{itemize}
+    \item \textbf{物理意义}：代表光波传播方向的改变（倾斜）。
+    \item \textbf{作用}：
+        \begin{itemize}
+            \item 在**空域**乘以线性相因子 $\implies$ **频谱**发生平移（位移定理）。
+            \item 例如：棱镜的作用就是引入线性相因子。
+        \end{itemize}
+\end{itemize}
+
+\subsection{二次相因子 (Quadratic Phase Factor)}
+形式：$e^{\ii \frac{k}{2R} (x^2+y^2)}$。
+\begin{itemize}
+    \item \textbf{物理意义}：傍轴近似下的**球面波**。
+    \item \textbf{参数符号}：
+        \begin{itemize}
+            \item $R > 0$：发散球面波（点源在左）。
+            \item $R < 0$：会聚球面波（焦点在右）。
+        \end{itemize}
+    \item \textbf{自由空间传播}：
+    菲涅耳衍射积分核即包含二次相因子 $e^{\ii \frac{k}{2z} (x^2+y^2)}$。这表明光在自由空间传播一段距离 $z$，相当于与一个二次相因子进行卷积。
+\end{itemize}
+
+\subsection{薄透镜的位相变换作用}
+透镜是光学信息处理的核心元件。
+\mydef{透镜的复振幅透射率}
+$$ t_l(x, y) = e^{-\ii \frac{k}{2f} (x^2+y^2)} $$
+(忽略常数相位因子 $e^{\ii k n \Delta_0}$)
+\begin{itemize}
+    \item \textbf{物理图像}：透镜将入射的平面波（波前平直）转化为会聚球面波（波前弯曲）。
+    \item \textbf{相位抵消}：若入射光是发散球面波 $e^{\ii \frac{k}{2d_1}(x^2+y^2)}$，经过透镜后：
+    $$ U_{out} = e^{\ii \frac{k}{2d_1}(x^2+y^2)} \cdot e^{-\ii \frac{k}{2f}(x^2+y^2)} = e^{\ii \frac{k}{2} (\frac{1}{d_1} - \frac{1}{f}) (x^2+y^2)} $$
+    若满足成像公式 $\frac{1}{d_1} + \frac{1}{d_2} = \frac{1}{f}$，则输出变为 $e^{-\ii \frac{k}{2d_2}(x^2+y^2)}$，即会聚到 $d_2$ 处的球面波。
+\end{itemize}
+
+\subsection{透镜的傅里叶变换性质}
+这是傅里叶光学的核心结论。
+\textbf{结论}：若物体置于透镜的**前焦面**，则在透镜的**后焦面**上，光场分布准确地正比于物函数的傅里叶变换。
+$$ U_f(x_f, y_f) \propto \mathcal{F}\{t_0(x_0, y_0)\} \bigg|_{u = \frac{x_f}{\lambda f}, v = \frac{y_f}{\lambda f}} $$
+透镜的作用就是在后焦面上物理地实现二维傅里叶变换。

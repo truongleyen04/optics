@@ -55,7 +55,17 @@
 \newcommand{\boxedmath}[1]{
   \fcolorbox{black}{white}{\scalebox{1.3}{#1}}
 }
+\usepackage{amsmath}
+\DeclareMathOperator{\sinc}{sinc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
 
+% 定义自定义数学算子，确保字体为正体且间距正确
+\DeclareMathOperator{\comb}{comb}
+\DeclareMathOperator{\rect}{rect}
+\newcommand{\circfunc}{\text{circ}} % 或者定义为 \DeclareMathOperator{\circfunc}{circ}
+
+% 如果不想定义新命令，可以直接在正文使用 \operatorname{...}
 
 % --- 文档信息 ---
 \title{\bfseries 光学} % 标题内容。字体大小由文档类自动处理，这里只指定粗体。
@@ -71,4 +81,10 @@
 \input{jihe/guangxueyiqi}
 
 \input{bodong/ganshe}
+\input{bodong/jiezhi}
+\input{bodong/ganshe_shikong}
+\input{bodong/duoyuan.tex}
+\input{bodong/foulier}
+\input{bodong/quanxi.tex}
+\input{bodong/jingti.tex}
 \end{document} % 文档结束

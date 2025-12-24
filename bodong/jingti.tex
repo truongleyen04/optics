@@ -1,0 +1,164 @@
+\section{晶体的光学各向异性 (Optical Anisotropy)}
+
+在各向同性介质（如玻璃、水）中，电位移矢量 $\vec{D}$ 与电场强度 $\vec{E}$ 方向相同，即 $\vec{D} = \varepsilon \vec{E}$，折射率 $n$ 为常数。
+而在**晶体**中，介质的极化性质随方向而变（各向异性），$\vec{D}$ 与 $\vec{E}$ 通常**不平行**。
+
+\subsection{介电张量 (Dielectric Tensor)}
+在晶体的主轴坐标系 $(x, y, z)$ 中，本构关系表示为张量形式：
+\begin{equation}
+    \begin{pmatrix} D_x \\ D_y \\ D_z \end{pmatrix} = 
+    \begin{pmatrix} 
+    \varepsilon_x & 0 & 0 \\ 
+    0 & \varepsilon_y & 0 \\ 
+    0 & 0 & \varepsilon_z 
+    \end{pmatrix} 
+    \begin{pmatrix} E_x \\ E_y \\ E_z \end{pmatrix}
+\end{equation}
+定义**主折射率 (Principal Refractive Indices)**：
+\begin{equation}
+    n_x = \sqrt{\frac{\varepsilon_x}{\varepsilon_0}}, \quad n_y = \sqrt{\frac{\varepsilon_y}{\varepsilon_0}}, \quad n_z = \sqrt{\frac{\varepsilon_z}{\varepsilon_0}}
+\end{equation}
+
+\subsection{晶体的分类}
+\begin{itemize}
+    \item **各向同性体**：$n_x = n_y = n_z$（立方晶系）。
+    \item **单轴晶体 (Uniaxial Crystal)**：$n_x = n_y \neq n_z$（四方、六方、三方晶系）。
+        \begin{itemize}
+            \item $z$ 轴称为**光轴 (Optical Axis)**。
+            \item 令 $n_x = n_y = n_o$（寻常光折射率），$n_z = n_e$（非寻常光主折射率）。
+        \end{itemize}
+    \item **双轴晶体 (Biaxial Crystal)**：$n_x \neq n_y \neq n_z$（正交、单斜、三斜晶系）。
+\end{itemize}
+
+\section{折射率椭球 (Index Ellipsoid)}
+
+钟锡华教材特别推崇利用几何方法——**折射率椭球**（又称光率体）来分析光在晶体中的传播特性。
+
+\subsection{椭球方程}
+\begin{equation}
+    \frac{x^2}{n_x^2} + \frac{y^2}{n_y^2} + \frac{z^2}{n_z^2} = 1
+\end{equation}
+这是一个三维几何曲面，其主轴长度分别为 $2n_x, 2n_y, 2n_z$。
+
+\subsection{几何分析法 (Method of Index Ellipsoid)}
+给定波法线方向 $\vec{s}$（即平面波的传播方向 $\vec{k}$ 的方向），如何确定允许的偏振方向和折射率？
+\begin{enumerate}
+    \item 过椭球中心作一个**平面**，该平面垂直于波法线 $\vec{s}$。
+    \item 该平面与折射率椭球的交线是一个**椭圆**。
+    \item 该椭圆的**长轴**和**短轴**方向，即为允许的两个线性偏振态（$\vec{D}$ 的振动方向）。
+    \item 椭圆**半长轴**和**半短轴**的长度，即为对应的两个折射率 $n'$ 和 $n''$。
+\end{enumerate}
+\textbf{结论}：一般情况下，沿任意方向 $\vec{s}$ 传播的光波，会分裂为两束偏振方向互相垂直、相速度不同的线偏振光。这就是**双折射 (Birefringence)**。
+
+\section{菲涅耳波法线方程 (Fresnel's Equation of Wave Normals)}
+
+这是描述晶体光学的代数基础。设相速度为 $v_p = c/n$，波法线方向余弦为 $(s_x, s_y, s_z)$。
+从麦克斯韦方程组出发，可推导出关于相速度 $v_p$ 的方程：
+\begin{equation}
+    \frac{s_x^2}{v_p^2 - v_x^2} + \frac{s_y^2}{v_p^2 - v_y^2} + \frac{s_z^2}{v_p^2 - v_z^2} = 0
+\end{equation}
+其中 $v_i = c/n_i$ 为主相速度。
+这是一个关于 $v_p^2$ 的二次方程，对于给定的方向 $\vec{s}$，一般有两个正实根 $v_{p1}, v_{p2}$，对应两种传播模式。
+
+\section{单轴晶体中的双折射 (Birefringence in Uniaxial Crystals)}
+
+单轴晶体 ($n_x=n_y=n_o, n_z=n_e$) 是最常见的研究对象。
+
+\subsection{o 光与 e 光}
+利用折射率椭球分析可知，对于单轴晶体：
+\begin{enumerate}
+    \item **寻常光 (Ordinary ray, o光)**：
+    \begin{itemize}
+        \item 折射率恒为 $n_o$。
+        \item 相速度 $v_o = c/n_o$ 与方向无关。
+        \item 振动方向 ($\vec{D}_o$) 垂直于光轴和波法线构成的平面。
+    \end{itemize}
+    \item **非寻常光 (Extraordinary ray, e光)**：
+    \begin{itemize}
+        \item 折射率 $n_e(\theta)$ 随波法线与光轴夹角 $\theta$ 变化。
+        \item \textbf{公式}：
+        \begin{equation}
+            \frac{1}{n_e^2(\theta)} = \frac{\cos^2\theta}{n_o^2} + \frac{\sin^2\theta}{n_e^2}
+        \end{equation}
+        \item 振动方向 ($\vec{D}_e$) 在光轴与波法线构成的平面内。
+    \end{itemize}
+\end{enumerate}
+
+\subsection{正晶体与负晶体}
+\begin{itemize}
+    \item **正晶体 (Positive)**：$n_e > n_o$（即 $v_e < v_o$）。例如：石英 (Quartz)。
+    \item **负晶体 (Negative)**：$n_e < n_o$（即 $v_e > v_o$）。例如：方解石 (Calcite)。
+\end{itemize}
+
+\subsection{惠更斯作图法 (Huygens' Construction)}
+钟锡华教材中经典的作图法，用于确定折射光线的方向。
+\begin{itemize}
+    \item **原理**：界面上的每一点作为次波源，发射子波。
+    \item **波面形状**：
+        \begin{itemize}
+            \item o 光波面：球面。
+            \item e 光波面：旋转椭球面。
+        \end{itemize}
+    \item **作图步骤**：
+        1. 以入射点为中心画出 o 光球面和 e 光椭球面。
+        2. 根据折射定律的时空匹配条件（公切线/包络面），确定新的波前。
+        3. 连接波源中心与切点的连线即为**光线方向 (Ray Direction)**。
+\end{itemize}
+\textbf{注意}：在晶体中，**光线方向**（能量传播方向，坡印廷矢量）与**波法线方向**（相位传播方向，$\vec{k}$）通常\textbf{不重合}（o 光除外）。
+
+\section{晶体光学器件 (Crystal Optical Devices)}
+
+\subsection{偏振棱镜 (Polarizing Prisms)}
+利用双折射性质和全反射原理，将 o 光和 e 光分离开，获得线偏振光。
+\begin{itemize}
+    \item **尼科耳棱镜 (Nicol Prism)**：早期使用，利用加拿大树胶粘合方解石。o 光在胶层发生全反射被吸收，e 光透过。
+    \item **格兰-泰勒棱镜 (Glan-Taylor Prism)**：空气隙结构，透射率高，消光比极高（现代常用）。
+    \item **沃拉斯顿棱镜 (Wollaston Prism)**：由两块光轴互相垂直的直角棱镜胶合而成。o 光和 e 光折射率突变方向相反，导致两束光分角射出（双光束偏振分束器）。
+\end{itemize}
+
+\subsection{波片 (Wave Plates)}
+利用晶体的双折射产生两个正交分量之间的相位差（延迟）。通常光轴平行于表面切割。
+设波片厚度为 $d$，工作波长 $\lambda$。
+\mydef{相位延迟量 $\delta$}
+\begin{equation}
+    \delta = \frac{2\pi}{\lambda} |n_o - n_e| d
+\end{equation}
+
+\begin{enumerate}
+    \item **全波片 ($\lambda$片)**：$\delta = 2m\pi$。偏振态不变。
+    \item **半波片 ($\lambda/2$片)**：$\delta = (2m+1)\pi$。
+    \begin{itemize}
+        \item 作用：线偏振光入射，出射仍为线偏振光，但振动面转过 $2\alpha$ 角（$\alpha$ 为入射振动面与快轴夹角）。
+    \end{itemize}
+    \item **四分之一波片 ($\lambda/4$片)**：$\delta = (2m+1)\pi/2$。
+    \begin{itemize}
+        \item 作用：线偏振光（$\alpha=45^\circ$）入射 $\to$ 圆偏振光；圆偏振光入射 $\to$ 线偏振光。
+    \end{itemize}
+\end{enumerate}
+
+\section{偏振光的干涉 (Interference of Polarized Light)}
+
+\subsection{干涉装置}
+起偏器 $P_1$ $\to$ 晶体波片 $C$ $\to$ 检偏器 $P_2$。
+由于晶体的双折射，o 光和 e 光在出射后获得相位差 $\delta$，在通过检偏器 $P_2$ 投影到同一方向后发生干涉。
+
+\subsection{透射光强公式}
+设 $P_1, P_2$ 透光轴夹角为 $\beta$，波片光轴与 $P_1$ 夹角为 $\alpha$。
+\begin{equation}
+    I = I_0 [ \cos^2 \beta - \sin 2\alpha \sin 2(\beta-\alpha) \sin^2(\delta/2) ]
+\end{equation}
+\textbf{特例}：
+\begin{itemize}
+    \item **正交偏振 ($P_1 \perp P_2, \beta = 90^\circ$)**：
+    $$ I_{\perp} = I_0 \sin^2 2\alpha \sin^2(\delta/2) $$
+    若 $\delta = 2m\pi$（全波片），$I=0$（黑）。若 $\delta = (2m+1)\pi$（半波片），$I$ 最大。
+    \item **平行偏振 ($P_1 \parallel P_2, \beta = 0^\circ$)**：
+    $$ I_{\parallel} = I_0 (1 - \sin^2 2\alpha \sin^2(\delta/2)) $$
+    与正交情况互补：$I_{\perp} + I_{\parallel} = I_0$（色互补）。
+\end{itemize}
+
+\subsection{会聚光干涉 (Conoscopic Interference)}
+当用会聚光束照射晶体切片时，不同入射角对应不同的光程差 $\delta$，在焦平面上形成特定的干涉图样。
+\begin{itemize}
+    \item **单轴晶体垂直光轴切片**：在正交偏振场下，呈现一系列同心彩色圆环（等色线），并被一个黑色的**马耳他十字 (Maltese Cross)**（等倾线）所分割。
+\end{itemize}
