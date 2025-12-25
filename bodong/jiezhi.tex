@@ -1,8 +1,8 @@
-\section{介质界面光学 (Optics at Interfaces)}
+\section{介质界面光学}
 
 当光波从一种介质（折射率 $n_1$）射向另一种介质（折射率 $n_2$）时，在界面上发生的反射和折射现象由电磁场边界条件决定。
 
-\subsection{菲涅耳公式 (Fresnel Formulas)}
+\subsection{菲涅耳公式}
 将入射光的电矢量 $\vec{E}$ 分解为两个互相垂直的分量：
 \begin{itemize}
     \item \textbf{s 分量}（垂直分量，$\perp$）：电矢量垂直于入射面。
@@ -10,13 +10,13 @@
 \end{itemize}
 设入射角为 $i_1$，折射角为 $i_2$（满足斯涅耳定律 $n_1 \sin i_1 = n_2 \sin i_2$）。
 
-\mydef{反射系数 (Reflection Coefficients)}
+\mydef{反射系数}
 \begin{equation}
     r_s = \frac{E'_{s0}}{E_{s0}} = - \frac{\sin(i_1 - i_2)}{\sin(i_1 + i_2)}, \quad
     r_p = \frac{E'_{p0}}{E_{p0}} = \frac{\tan(i_1 - i_2)}{\tan(i_1 + i_2)}
 \end{equation}
 
-\mydef{透射系数 (Transmission Coefficients)}
+\mydef{透射系数}
 \begin{equation}
     t_s = \frac{E''_{s0}}{E_{s0}} = \frac{2 \sin i_2 \cos i_1}{\sin(i_1 + i_2)}, \quad
     t_p = \frac{E''_{p0}}{E_{p0}} = \frac{2 \sin i_2 \cos i_1}{\sin(i_1 + i_2) \cos(i_1 - i_2)}
@@ -28,7 +28,7 @@
     \item 当 $i_1 \to 0$（正入射）时：$r_s = r_p = \frac{n_1 - n_2}{n_1 + n_2}$（符号差异取决于坐标系定义，本质是一致的）。
 \end{itemize}
 
-\subsection{反射率与透射率 (Reflectance and Transmittance)}
+\subsection{反射率与透射率}
 光强 $I \propto n |\vec{E}|^2$。能量守恒要求穿过界面的能流连续。
 
 \mydef{反射率 $R$}
@@ -45,7 +45,7 @@
 \end{equation}
 \textbf{能量守恒}：$R + T = 1$ 对 s 和 p 分量分别成立。
 
-\subsection{布儒斯特角 (Brewster's Angle)}
+\subsection{布儒斯特角}
 \mydef{定义}
 当 $r_p = 0$ 时，反射光中完全没有 p 分量，只有 s 分量，此时反射光为\textbf{完全线偏振光}。对应的入射角称为布儒斯特角 $i_B$。
 \begin{equation}
@@ -62,15 +62,8 @@
 \end{equation}
 此时 $R=1$，能量全部反射回第一介质。
 
-\subsection{相位变化与古斯-汉欣位移}
-\mydef{相位变化}
-在全反射区，反射系数 $r_s$ 和 $r_p$ 变为复数，模为 1，但存在相位因子 $e^{\ii \delta}$。这导致反射光产生相位延迟，且 $\delta_s \neq \delta_p$。
-应用：\textbf{菲涅耳菱体}利用两次全反射将线偏振光转变为圆偏振光。
 
-\mydef{古斯-汉欣位移 (Goos-Hänchen Shift)}
-实验发现，全反射时实际反射光束相对于几何光学的反射点在界面上有一个微小的侧向位移 $D$（约波长量级）。这表明光波实际上穿透到了第二介质中一段距离后再返回。
-
-\subsection{倏逝波 (Evanescent Wave)}
+\subsection{倏逝波}
 \mydef{物理本质}
 在全反射条件下，第二介质（光疏介质）中虽然没有传输能量的折射波，但存在一种非均匀波，称为\textbf{倏逝波}（或隐失波）。
 其电场分布特征为：
@@ -84,11 +77,11 @@
 \end{equation}
 通常 $d_p$ 仅为波长量级。倏逝波不向 $z$ 方向传输平均能流，能量被束缚在界面附近。
 
-\section{近场光学显微镜 (Near-field Optical Microscopy)}
+\section{近场光学显微镜}
 
 \begin{spacing}{1.5}
 
-\subsection{远场衍射极限 (Far-field Diffraction Limit)}
+\subsection{远场衍射极限}
 传统光学显微镜接收的是从物体传播到远处的\textbf{传播波 (Propagating Wave)}。
 根据瑞利判据或阿贝成像原理，其分辨率受限于波长：
 \begin{equation}
@@ -96,11 +89,11 @@
 \end{equation}
 物体的高频空间信息（对应微小细节）往往携带在倏逝波中。由于倏逝波在垂直传播方向上指数衰减，无法到达远场，导致细节信息丢失。
 
-\subsection{近场光学原理 (SNOM/NSOM)}
+\subsection{近场光学原理}
 \mydef{核心思想}
 利用极细的探针（孔径 $a \ll \lambda$）伸入到距离样品表面极近的区域（近场区，$z < \lambda$），通过探测或干扰界面上的\textbf{倏逝波}，将其转化为可传输的传播波，从而被探测器接收。
 
-\subsection{扫描近场光学显微镜 (SNOM)}
+\subsection{扫描近场光学显微镜}
 \textbf{结构特点}：
 \begin{itemize}
     \item \textbf{探针}：通常为拉制的锥形光纤，尖端镀金属膜，留有几十纳米的通光孔。
@@ -111,10 +104,5 @@
 \textbf{分辨率}：
 不再受光波长 $\lambda$ 限制，而是取决于\textbf{探针孔径大小}（可达 $\SI{20}{nm} \sim \SI{50}{nm}$）和\textbf{探针与样品的距离}。
 
-\begin{figure}[htbp]
-    \centering
-    [图片: 倏逝波探测原理与SNOM探针示意图]
-    \caption{近场光学探测原理：探针将束缚在表面的倏逝波转化为传播波}
-    \label{fig:snom}
-\end{figure}
+
 \end{spacing}

@@ -1,26 +1,26 @@
-\section{二维傅里叶变换 (Two-Dimensional Fourier Transform)}
+\section{二维傅里叶变换}
 
 在波动光学中，空间复振幅分布 $U(x, y)$ 与其空间频谱 $\mathcal{F}\{U\}$ 构成傅里叶变换对。这揭示了光场在**空域 (Space Domain)** 和**频域 (Frequency Domain)** 的对偶关系。
 
 \subsection{定义与存在条件}
 设 $f(x, y)$ 为空间域函数，$u, v$ 为空间频率变量（单位：$\text{mm}^{-1}$）。
-\mydef{正变换 (Forward Transform)}
+\mydef{正变换}
 \begin{equation}
     F(u, v) = \mathcal{F}\{f(x, y)\} = \iint_{-\infty}^{\infty} f(x, y) e^{-\ii 2\pi (ux + vy)} \dd x \dd y
 \end{equation}
 
-\mydef{逆变换 (Inverse Transform)}
+\mydef{逆变换}
 \begin{equation}
     f(x, y) = \mathcal{F}^{-1}\{F(u, v)\} = \iint_{-\infty}^{\infty} F(u, v) e^{\ii 2\pi (ux + vy)} \dd u \dd v
 \end{equation}
 
 \textbf{物理意义}：逆变换公式表明，任意复杂的波场 $f(x, y)$ 都可以看作是无穷多个不同方向、不同振幅和相位的**平面波** $e^{\ii 2\pi (ux + vy)}$ 的线性叠加。$F(u, v)$ 即为这些平面波的复振幅权重（角谱）。
 
-\section{常用函数及其频谱 (Common Functions)}
+\section{常用函数及其频谱}
 
 钟锡华教材非常强调对这几个“积木”函数的熟练掌握，它们是分析复杂光学系统的基础。
 
-\subsection{矩形函数 (Rectangle Function)}
+\subsection{矩形函数}
 定义：$\rect(x) = \begin{cases} 1, & |x| < 1/2 \\ 0, & |x| > 1/2 \end{cases}$
 \begin{itemize}
     \item \textbf{二维矩孔}：$f(x, y) = \rect(\frac{x}{a}) \rect(\frac{y}{b})$
@@ -28,7 +28,7 @@
     \item \textbf{注}：钟书定义 $\sinc(x) = \frac{\sin(\pi x)}{\pi x}$。
 \end{itemize}
 
-\subsection{圆域函数 (Circle Function)}
+\subsection{圆域函数}
 定义：$\circfunc(r) = \begin{cases} 1, & r < 1 \\ 0, & r > 1 \end{cases}$，其中 $r = \sqrt{x^2+y^2}$。
 \begin{itemize}
     \item \textbf{二维圆孔}：$f(x, y) = \circfunc(\frac{\sqrt{x^2+y^2}}{a})$
@@ -36,7 +36,7 @@
     \item 这是艾里斑强度的振幅基础。
 \end{itemize}
 
-\subsection{狄拉克 $\delta$ 函数 (Delta Function)}
+\subsection{狄拉克 $\delta$ 函数}
 \mydef{筛选性质}
 $\int_{-\infty}^{\infty} f(x) \delta(x-x_0) \dd x = f(x_0)$。
 \begin{itemize}
@@ -44,16 +44,16 @@ $\int_{-\infty}^{\infty} f(x) \delta(x-x_0) \dd x = f(x_0)$。
     \item $\mathcal{F}\{1\} = \delta(u, v)$ （均匀平面波对应单一空间频率）。
 \end{itemize}
 
-\subsection{梳状函数 (Comb Function)}
+\subsection{梳状函数}
 定义：$\comb(x) = \sum_{n=-\infty}^{\infty} \delta(x-n)$。
 \begin{itemize}
     \item \textbf{性质}：$\mathcal{F}\{\comb(x)\} = \comb(u)$。梳状函数的傅里叶变换仍是梳状函数。
     \item \textbf{应用}：描述光栅、采样过程。
 \end{itemize}
 
-\section{基本定理与卷积 (Basic Theorems)}
+\section{基本定理与卷积}
 
-\subsection{位移定理 (Shift Theorem)}
+\subsection{位移定理}
 \begin{itemize}
     \item \textbf{空域位移} $\leftrightarrow$ \textbf{频域线性相移}：
     $$ f(x-x_0, y-y_0) \Longleftrightarrow F(u, v) e^{-\ii 2\pi (u x_0 + v y_0)} $$

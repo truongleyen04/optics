@@ -1,4 +1,4 @@
-\section{一维多元结构：光栅衍射 (Diffraction Gratings)}
+\section{一维多元结构：光栅衍射}
 
 光栅是大量等宽、等间距的平行狭缝（或反射面）的组合。它是多光束干涉与单缝衍射的综合体现。
 
@@ -14,8 +14,8 @@
     \item \textbf{槽间相位差}：$\delta = \frac{2\pi d}{\lambda} \sin \theta$
 \end{itemize}
 
-\subsection{主极大与极小 (Maxima and Minima)}
-\mydef{主极大 (Principal Maxima)}
+\subsection{主极大与极小}
+\mydef{主极大}
 由干涉因子决定。当分母 $\sin(\delta/2) = 0$ 时，利用洛必达法则可得干涉因子趋于 $N^2$。
 条件：$\frac{\delta}{2} = k\pi \quad (k = 0, \pm 1, \pm 2, \dots)$。
 即光栅方程：
@@ -24,15 +24,15 @@
 \end{equation}
 \textbf{特征}：亮度极大（$I \propto N^2$），条纹细锐。
 
-\mydef{极小值 (Minima)}
+\mydef{极小值}
 当分子 $\sin(N\delta/2) = 0$ 但分母不为 0 时，光强为 0。
 条件：$\frac{N\delta}{2} = m\pi$ 且 $m \neq N \cdot \text{整数}$。
 \textbf{特征}：在两个主极大之间，有 $N-1$ 个暗纹。
 
-\mydef{次极大 (Secondary Maxima)}
+\mydef{次极大}
 在两个主极大之间，存在 $N-2$ 个次极大。随着 $N$ 增大，次极大光强迅速衰减（相比主极大可忽略），背景变得非常干净。
 
-\subsection{缺级现象 (Missing Orders)}
+\subsection{缺级现象}
 当某一干涉主极大级次 $k$ 的位置，恰好落在单缝衍射的暗纹位置（衍射因子为 0）时，该级主极大消失。
 \begin{itemize}
     \item 干涉主极大条件：$d \sin \theta = k \lambda$
@@ -44,11 +44,11 @@
 \end{equation}
 例如：若 $d=3a$，则 $k = \pm 3, \pm 6, \dots$ 等级次缺级。
 
-\section{二维孔径衍射 (Diffraction by 2D Apertures)}
+\section{二维孔径衍射}
 
 根据惠更斯-菲涅耳原理，二维孔径的复振幅分布是孔径函数的二维傅里叶变换。
 
-\subsection{矩孔衍射 (Rectangular Aperture)}
+\subsection{矩孔衍射}
 设矩形孔径宽 $a$（$x$ 方向），高 $b$（$y$ 方向）。
 由于变量 $x, y$ 可分离，总光强分布是两个正交单缝衍射的乘积：
 \begin{equation}
@@ -57,14 +57,14 @@
 其中 $\alpha = \frac{\pi a \sin \theta_x}{\lambda}, \beta = \frac{\pi b \sin \theta_y}{\lambda}$。
 \textbf{图样特征}：呈十字形亮斑，沿孔径较窄的方向衍射扩展较大（反比关系）。
 
-\subsection{圆孔衍射 (Circular Aperture)}
+\subsection{圆孔衍射}
 设圆孔直径为 $D = 2a$。由于旋转对称性，衍射图样为同心圆环。
 光强分布涉及一阶贝塞尔函数 $J_1$：
 \begin{equation}
     I(\theta) = I_0 \left[ \frac{2 J_1(x)}{x} \right]^2, \quad x = \frac{\pi D}{\lambda} \sin \theta
 \end{equation}
 
-\mydef{艾里斑 (Airy Disk)}
+\mydef{艾里斑}
 中心最大的亮斑称为艾里斑，集中了 83.8\% 的能量。
 第一暗环角半径 $\theta_0$ 满足 $x = 3.832$，即：
 \begin{equation}
@@ -72,14 +72,14 @@
 \end{equation}
 这定义了光学仪器的\textbf{分辨本领}（瑞利判据）：两个非相干点源的角距离 $\Delta \theta \ge 1.22 \lambda/D$ 时才能被分辨。
 
-\section{分形光学基础 (Fractal Optics)}
+\section{分形光学基础}
 
 钟锡华老师教材的特色章节。分形 (Fractal) 的核心特征是\textbf{自相似性 (Self-similarity)}，即局部与整体在形态上相似。
 
 \subsection{分形结构的衍射}
 当衍射屏的透光孔径具有分形结构时，其远场衍射图样（频谱）也往往表现出分形特征。
 
-\mydef{康托尔集 (Cantor Set)}
+\mydef{康托尔集}
 最简单的一维分形。
 \begin{itemize}
     \item \textbf{生成规则}：将一条线段三等分，去掉中间一段；对剩下的两段重复此操作，无限迭代。
@@ -95,6 +95,6 @@
 
 \subsection{二维分形：谢尔宾斯基地毯与三角}
 \begin{itemize}
-    \item \textbf{谢尔宾斯基地毯 (Sierpinski Carpet)}：将正方形九等分，挖去中间一个；迭代。
+    \item \textbf{谢尔宾斯基地毯}：将正方形九等分，挖去中间一个；迭代。
     \item \textbf{衍射特征}：衍射图样也是二维分形结构，具有极丰富的高频分量和嵌套的零点分布。
 \end{itemize}
