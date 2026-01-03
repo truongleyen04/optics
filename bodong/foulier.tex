@@ -14,7 +14,7 @@
     f(x, y) = \mathcal{F}^{-1}\{F(u, v)\} = \iint_{-\infty}^{\infty} F(u, v) e^{\ii 2\pi (ux + vy)} \dd u \dd v
 \end{equation}
 
-\textbf{物理意义}：逆变换公式表明，任意复杂的波场 $f(x, y)$ 都可以看作是无穷多个不同方向、不同振幅和相位的**平面波** $e^{\ii 2\pi (ux + vy)}$ 的线性叠加。$F(u, v)$ 即为这些平面波的复振幅权重（角谱）。
+\textbf{物理意义}：逆变换公式表明，任意复杂的波场 $f(x, y)$ 都可以看作是无穷多个不同方向、不同振幅和相位的平面波 $e^{\ii 2\pi (ux + vy)}$ 的线性叠加。$F(u, v)$ 即为这些平面波的复振幅权重（角谱）。
 
 \section{常用函数及其频谱}
 
@@ -59,40 +59,40 @@ $\int_{-\infty}^{\infty} f(x) \delta(x-x_0) \dd x = f(x_0)$。
     $$ f(x-x_0, y-y_0) \Longleftrightarrow F(u, v) e^{-\ii 2\pi (u x_0 + v y_0)} $$
     \item \textbf{频域位移} $\leftrightarrow$ \textbf{空域线性相移}：
     $$ f(x, y) e^{\ii 2\pi (u_0 x + v_0 y)} \Longleftrightarrow F(u-u_0, v-v_0) $$
-    这是**斜入射**照明分析的基础。
+    这是斜入射照明分析的基础。
 \end{itemize}
 
-\subsection{卷积定理 (Convolution Theorem)}
+\subsection{卷积定理}
 定义卷积：$g(x, y) = f(x, y) * h(x, y) = \iint f(\xi, \eta) h(x-\xi, y-\eta) \dd \xi \dd \eta$。
 \begin{itemize}
     \item \textbf{时域卷积} $\leftrightarrow$ \textbf{频域乘积}：
     $$ \mathcal{F}\{f * h\} = \mathcal{F}\{f\} \cdot \mathcal{F}\{h\} $$
-    这构成了**线性系统理论**的基础：输出 = 输入 * 脉冲响应 $\implies$ 输出频谱 = 输入频谱 $\cdot$ 传递函数。
+    这构成了线性系统理论的基础：输出 = 输入 * 脉冲响应 $\implies$ 输出频谱 = 输入频谱 $\cdot$ 传递函数。
 \end{itemize}
 
-\subsection{巴塞伐尔定理 (Parseval's Theorem)}
+\subsection{巴塞伐尔定理}
 能量守恒在空域和频域的体现：
 $$ \iint |f(x, y)|^2 \dd x \dd y = \iint |F(u, v)|^2 \dd u \dd v $$
 
-\section{相因子分析 (Phase Factor Analysis)}
+\section{相因子分析}
 
 这是本章的精华。在傍轴光学中，光场的变换主要体现为相位的调制。钟锡华老师将复杂的衍射积分简化为对两种核心相因子的操作。
 
-\subsection{线性相因子 (Linear Phase Factor)}
+\subsection{线性相因子}
 形式：$e^{\ii 2\pi u_0 x}$ 或 $e^{\ii k x \sin \theta}$。
 \begin{itemize}
     \item \textbf{物理意义}：代表光波传播方向的改变（倾斜）。
     \item \textbf{作用}：
         \begin{itemize}
-            \item 在**空域**乘以线性相因子 $\implies$ **频谱**发生平移（位移定理）。
+            \item 在空域乘以线性相因子 $\implies$ 频谱发生平移（位移定理）。
             \item 例如：棱镜的作用就是引入线性相因子。
         \end{itemize}
 \end{itemize}
 
-\subsection{二次相因子 (Quadratic Phase Factor)}
+\subsection{二次相因子}
 形式：$e^{\ii \frac{k}{2R} (x^2+y^2)}$。
 \begin{itemize}
-    \item \textbf{物理意义}：傍轴近似下的**球面波**。
+    \item \textbf{物理意义}：傍轴近似下的球面波。
     \item \textbf{参数符号}：
         \begin{itemize}
             \item $R > 0$：发散球面波（点源在左）。
@@ -116,6 +116,6 @@ $$ t_l(x, y) = e^{-\ii \frac{k}{2f} (x^2+y^2)} $$
 
 \subsection{透镜的傅里叶变换性质}
 这是傅里叶光学的核心结论。
-\textbf{结论}：若物体置于透镜的**前焦面**，则在透镜的**后焦面**上，光场分布准确地正比于物函数的傅里叶变换。
+\textbf{结论}：若物体置于透镜的前焦面，则在透镜的后焦面上，光场分布准确地正比于物函数的傅里叶变换。
 $$ U_f(x_f, y_f) \propto \mathcal{F}\{t_0(x_0, y_0)\} \bigg|_{u = \frac{x_f}{\lambda f}, v = \frac{y_f}{\lambda f}} $$
 透镜的作用就是在后焦面上物理地实现二维傅里叶变换。

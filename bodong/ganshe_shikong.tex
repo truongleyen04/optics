@@ -28,27 +28,114 @@
     \end{itemize}
 \end{enumerate}
 
-\subsection{空间相干性}
-只考虑同一时刻 $\tau=0$ 不同空间点 $\vec{r}_1, \vec{r}_2$ 的相关性。
-\mydef{物理根源}
-光源的扩展线度（非点光源）。
-\insertfigure{picture/2025-12-25-15-11-50.png}{0}{fig:0}
-\textbf{相干面积}：相干度下降到一定值（基本为$b_0^2$的空间范围）。
-$$ \text{相干孔径角} \, \theta_c \approx \frac{\lambda}{b} $$
- $$\theta_c = \frac{b}{R} $$
-
-\subsection{时间相干性}
-只考虑同一点 $\vec{r}$ 在不同时刻的相关性，即 $\vec{r}_1 = \vec{r}_2$。
-\mydef{物理根源}
-光源的非单色性（频谱宽度 $\Delta \nu$）。
-
-
-这意味着：\textbf{光谱越窄（单色性越好），相干时间越长}。
-
-\mydef{相干时间与相干长度}
+\subsubsection{空间相干性}
+实际光源具有宽度 $b$。
 \begin{itemize}
-    \item \textbf{相干时间} $\tau_c \approx 1 / \Delta \nu$。
-    \item \textbf{相干长度} $L_c = c \tau_c \approx \lambda^2 / \Delta \lambda$。
+    \item 光源上不同点发出的波列是不相干的，产生的干涉条纹在屏上发生位移。
+    \item 当边缘点产生的条纹相对中心点位移达 $\Delta x / 2$ 时，条纹完全模糊。
 \end{itemize}
+\textbf{相干极限}：
+\begin{equation}
+    b \cdot \frac{d}{D} \le \lambda \implies b \cdot \theta_s \le \lambda
+\end{equation}
+其中 $\theta_s \approx d/D$ 为干涉孔径角。
+\textbf{结论}：光源宽度越窄，允许的干涉孔径角越大，空间相干性越好。
+\insertfigure{picture/2025-12-25-14-07-10.png}{0}{fig:0}
+\subsection{分振幅干涉}
+
+\subsubsection{薄膜干涉基本原理}
+\textbf{模型}：折射率 $n_2$，厚度 $h$ 的薄膜，置于 $n_1$ 和 $n_3$ 之间。
+\textbf{光程差公式}：
+\begin{equation}
+    \Delta = 2 n_2 h \cos i_2 + \frac{\lambda}{2} (\text{若存在半波损失})
+\end{equation}
+\insertfigure{picture/2025-12-25-14-08-03.png}{0}{fig:0}
+\textbf{半波损失判据}：
+当 $n_1 < n_2 < n_3$ 或 $n_1 > n_2 > n_3$ 时，上下表面反射性质相同，无附加项。
+当 $n_1 < n_2$ 且 $n_2 > n_3$（如空气中肥皂膜），仅上表面有半波损失，需加 $\lambda/2$。
+
+\subsubsection{等倾干涉}
+\textbf{条件}：$h$ 均匀，面光源。
+\textbf{规律}：$\Delta$ 仅随入射角 $i$ (或折射角 $i_2$) 变化。
+\textbf{图样}：定域于无穷远（焦平面）的同心圆环。
+\textbf{吞吐现象}：膜厚 $h$ 增加，光程差增大，中心条纹级次冒出（“吐”），条纹整体外扩变密。
+
+\subsubsection{等厚干涉}
+\textbf{条件}：$h$ 不均匀，平行光（或准平行光）入射。
+\textbf{规律}：$\Delta$ 仅随厚度 $h$ 变化。条纹描绘了膜厚的等高线。
+\textbf{定域}：薄膜表面附近。
+
+\textbf{1. 劈尖}
+条纹间距 $L = \frac{\lambda}{2n \sin \alpha} \approx \frac{\lambda}{2n\alpha}$。
+应用：检测表面平整度（条纹弯曲度）、测量微小直径。
+
+\textbf{2. 牛顿环}
+光程差 $\Delta = 2h + \lambda/2 \approx r^2/R + \lambda/2$。
+\begin{itemize}
+    \item \textbf{反射光}中心为暗斑（接触点 $h=0, \Delta=\lambda/2$）。
+    \item \textbf{透射光}中心为亮斑（无半波损失）。
+\end{itemize}
+\insertfigure{picture/2025-12-25-14-09-07.png}{0}{fig:0}
+\subsubsection{光学薄膜应用}
+\begin{itemize}
+    \item \textbf{增透膜}：利用干涉相消。单层膜条件：$n_{膜}h = \lambda/4$, $n_{膜} = \sqrt{n_{基}}$。
+    \item \textbf{高反膜}：利用干涉相长。多层介质膜堆叠。
+\end{itemize}
+
+\subsection{迈克耳孙干涉仪与时间相干性}
+
+\subsubsection{仪器结构与原理}
+利用分光板 $G_1$ 分光。补偿板 $G_2$ 保证两臂玻璃光程相等，使仪器能用于白光干涉。
+等效为空气层厚度 $d$ 的薄膜干涉。
+\begin{itemize}
+    \item $M_1, M_2$ 严格垂直 $\to$ 等倾干涉（圆环）。
+    \item $M_1, M_2$ 有微小倾角 $\to$ 等厚干涉（直条纹，定域在楔形表面）。
+\end{itemize}
+\insertfigure{picture/2025-12-25-14-09-49.png}{0}{fig:0}
+\subsubsection{时间相干性}
+实际光源非单色（谱宽 $\Delta \nu$ 或 $\Delta \lambda$）。
+\textbf{波列长度}：原子发光过程持续时间有限（约 $\SI{e-8}{s}$），形成有限长度波列。
+\textbf{相干长度} $L_c$：能够发生干涉的最大光程差。
+\begin{equation}
+    L_c \approx \frac{c}{\Delta \nu} = \frac{\lambda^2}{\Delta \lambda}
+\end{equation}
+\textbf{白光干涉}：由于白光 $\Delta \lambda$ 很大，$L_c$ 极短（仅几微米）。仅在零级条纹附近（$\Delta \approx 0$）可见彩色条纹，中心为黑色（半波损失）。常用于确定“零光程差”位置。
+
+\subsection{多光束干涉}
+
+\subsubsection{法布里-珀罗 干涉仪}
+由两块平行的高反射率（$R \to 1$）平板组成。
+\textbf{原理}：入射光在腔内多次反射，形成振幅递减、相位等差的无穷多束光叠加。
+\insertfigure{picture/2025-12-25-14-11-44.png}{0}{fig:0}
+
+\subsubsection{艾里公式}
+透射光强 $I_T$ 随相位差 $\delta = \frac{4\pi n h \cos i}{\lambda}$ 的分布：
+\begin{equation}
+    I_T = I_{\max} \frac{1}{1 + F \sin^2 (\delta/2)}
+\end{equation}
+\textbf{精细度系数}：$F = \frac{4R}{(1-R)^2}$。
+\begin{itemize}
+    \item $R$ 越大，$F$ 越极大，条纹极其细锐。
+\end{itemize}
+
+\subsubsection{重要应用参数}
+\begin{itemize}
+    \item \textbf{自由光谱范围}：相邻两个干涉级次之间的波长差。$\Delta \lambda_{fsr} \approx \frac{\lambda^2}{2nh}$。
+    \item \textbf{分辨本领}：$\mathcal{R_c} = \frac{\lambda}{\delta \lambda} =\pi K \frac{\sqrt{R}}{1-R}$。
+    \item \textbf{半值宽度}：
+
+$$
+\left\{
+\begin{aligned}
+    & \varepsilon = \frac{2(1-R)}{\sqrt{R}} \quad \text{rad} \quad (\text{相位}) \\[10pt]
+    & \Delta \theta_k = \frac{\lambda}{2\pi n h \sin\theta_k} \cdot \frac{1-R}{\sqrt{R}} \quad (\text{角}) \\[10pt]
+    & \Delta \lambda_k = \frac{\lambda_k^2}{2\pi n h} \cdot \frac{1-R}{\sqrt{R}} \quad \text{nm} \quad (\text{谱})
+\end{aligned}
+\right.
+$$
+    \item \textbf{选频（正入射）——频率间隔}：$\Delta v =\frac{c}{2nh}$
+\end{itemize}
+
+
 
 
