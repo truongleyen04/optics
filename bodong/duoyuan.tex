@@ -32,6 +32,44 @@
 \mydef{次极大}
 在两个主极大之间，存在 $N-2$ 个次极大。随着 $N$ 增大，次极大光强迅速衰减（相比主极大可忽略），背景变得非常干净。
 
+\subsection{半角宽度}
+主极大条纹具有一定的宽度。通常用**半角宽度** $\Delta \theta$ 来衡量，定义为主极大中心到第一极小值（零点）之间的角距离。
+
+由光栅衍射极小值条件 $N \delta = k' \pi$（其中 $k'$ 为非 $N$ 整数倍的整数），第一极小值对应 $N \delta$ 比主极大多 $\pi$。
+\begin{equation}
+    N \frac{\pi d}{\lambda} \sin(\theta + \Delta \theta) - N \frac{\pi d}{\lambda} \sin \theta = \pi
+\end{equation}
+利用微分近似 $d(\sin \theta) = \cos \theta \, d\theta$，可得：
+\begin{equation}
+    \Delta \theta = \frac{\lambda}{N d \cos \theta}
+\end{equation}
+\textbf{物理意义}：
+\begin{itemize}
+    \item $N$ 越大（缝数越多），条纹越细锐。
+    \item $\cos \theta$ 在分母，意味着衍射角越大，条纹越宽。
+    \item 有效宽度（线宽度）与总缝数 $N$ 成反比。
+\end{itemize}
+
+\subsection{角、线色散本领和色分辨本领}
+
+\subsubsection{角色散本领 (Angular Dispersion)}
+描述光栅将不同波长的光在空间角度上分开的能力。定义为衍射角 $\theta$ 对波长 $\lambda$ 的变化率。
+对光栅方程 $d \sin \theta = k \lambda$ 俩边微分：
+\begin{equation}
+    D = \frac{d\theta}{d\lambda} = \frac{k}{d \cos \theta}
+\end{equation}
+\textbf{结论}：级次 $k$ 越高、光栅常数 $d$ 越小，角色散越大。
+
+\subsubsection{色分辨本领 (Resolving Power)}
+描述光栅分辨两条靠得很近的谱线 $\lambda$ 和 $\lambda + \Delta \lambda$ 的能力。
+根据\textbf{瑞利判据}：波长为 $\lambda + \Delta \lambda$ 的主极大，恰好落在波长为 $\lambda$ 的第一极小值位置时，两谱线刚好能分辨。
+\begin{equation}
+    R = \frac{\lambda}{\Delta \lambda} = k N
+\end{equation}
+\textbf{结论}：分辨本领正比于光谱级次 $k$ 和光栅总缝数 $N$。要提高分辨率，最有效的方法是增加 $N$（即加宽光栅宽度或减小 $d$）。
+
+
+
 \subsection{缺级现象}
 当某一干涉主极大级次 $k$ 的位置，恰好落在单缝衍射的暗纹位置（衍射因子为 0）时，该级主极大消失。
 \begin{itemize}
@@ -44,12 +82,56 @@
 \end{equation}
 例如：若 $d=3a$，则 $k = \pm 3, \pm 6, \dots$ 等级次缺级。
 
+\subsection{闪耀光栅}
+\textbf{问题}：普通平面光栅的主要能量集中在 0 级（无色散），高级次光谱亮度很低。
+\textbf{原理}：通过刻划锯齿状槽面，使每个狭缝（刻痕）表面倾斜一个角度 $\theta_b$（闪耀角）。
+\begin{itemize}
+    \item \textbf{几何控制}：控制单缝衍射因子（槽面反射光）的中央主极大位置，使其从 0 级移到某一特定的干涉主极大 $k$ 级位置。
+    \item \textbf{闪耀波长}：当入射光垂直于光栅平面入射时，满足闪耀条件的波长 $\lambda_b$ 约为：
+    \begin{equation}
+        2 d \sin \theta_b \approx k \lambda_b \quad (\text{近似反射公式})
+    \end{equation}
+\end{itemize}
+\insertfigure{picture/2026-01-04-15-11-09.png}{0}{fig:0}
+\textbf{效果}：能量集中在特定级次，极大提高了光谱仪的效率。
+\insertfigure{picture/2026-01-04-15-10-33.png}{0}{fig:0}
+\subsection{晶体衍射}
+可见光波长太长，无法被晶格（间距 $\sim 10^{-10}$ m）衍射。需使用 X 射线（波长 $\sim 0.1$ nm）。
 
-\section{分形光学基础}
+\subsubsection{布拉格条件}
+视晶体为一组组平行的原子晶面，间距为 $d$。X 射线在晶面上发生镜面反射并干涉。
+\begin{itemize}
+    \item 注意：此处 $\theta$ 定义为\textbf{掠射角}（入射光与晶面的夹角），而非光学中常用的入射角（与法线夹角）。
+    \item 光程差：$\Delta L = 2d \sin \theta$。
+\end{itemize}
+\textbf{布拉格方程}：
+\begin{equation}
+    2d \sin \theta = k \lambda \quad (k=1, 2, \dots)
+\end{equation}
 
-钟锡华老师教材的特色章节。分形 (Fractal) 的核心特征是\textbf{自相似性}，即局部与整体在形态上相似。
 
-\subsection{分形结构的衍射}
+\subsubsection{劳厄斑和德拜相}
+\begin{itemize}
+    \item \textbf{劳厄斑}：
+    \begin{itemize}
+        \item \textbf{对象}：单晶体。
+        \item \textbf{光源}：连续谱 X 射线（白光）。
+        \item \textbf{现象}：由于不同晶面间距 $d$ 不同，会自动“挑选”满足布拉格条件的特定 $\lambda$ 形成衍射，胶片上出现不连续的斑点。用于测定晶体取向和对称性。
+    \end{itemize}
+    
+    \item \textbf{德拜-谢乐圆环}：
+    \begin{itemize}
+        \item \textbf{对象}：多晶体（粉末）。
+        \item \textbf{光源}：单色 X 射线。
+        \item \textbf{现象}：粉末中微小晶粒取向随机，满足衍射条件的反射光线形成圆锥面。在平面底片上呈现一系列同心圆环。用于物相分析。
+    \end{itemize}
+\end{itemize}
+
+\subsection{分形光学基础(扩展，不做要求)}
+
+分形 (Fractal) 的核心特征是\textbf{自相似性}，即局部与整体在形态上相似。
+
+\subsubsection{分形结构的衍射}
 当衍射屏的透光孔径具有分形结构时，其远场衍射图样（频谱）也往往表现出分形特征。
 
 \mydef{康托尔集}
@@ -59,14 +141,14 @@
     \item \textbf{分维数}：$D_f = \frac{\ln 2}{\ln 3} \approx 0.6309$。
 \end{itemize}
 
-\subsection{康托尔集的衍射图样}
+\subsubsection{康托尔集的衍射图样}
 \begin{itemize}
     \item \textbf{结构自相似}：康托尔光栅在空间结构上具有 $S=3$ 的标度不变性。
     \item \textbf{频谱自相似}：其衍射光强分布在空间频率域也表现出“层层嵌套”的包络结构。
     \item \textbf{主要结论}：$N$ 级康托尔集的衍射因子是各级单缝衍射因子与多缝干涉因子的无穷乘积。衍射图样中会出现“光强隙”，对应于空间结构中的“空隙”。
 \end{itemize}
 
-\subsection{二维分形：谢尔宾斯基地毯与三角}
+\subsubsection{二维分形：谢尔宾斯基地毯与三角}
 \begin{itemize}
     \item \textbf{谢尔宾斯基地毯}：将正方形九等分，挖去中间一个；迭代。
     \item \textbf{衍射特征}：衍射图样也是二维分形结构，具有极丰富的高频分量和嵌套的零点分布。

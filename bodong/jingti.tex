@@ -1,164 +1,83 @@
-\section{晶体的光学各向异性}
+\section{晶体光学}
 
-在各向同性介质（如玻璃、水）中，电位移矢量 $\vec{D}$ 与电场强度 $\vec{E}$ 方向相同，即 $\vec{D} = \varepsilon \vec{E}$，折射率 $n$ 为常数。
-而在晶体中，介质的极化性质随方向而变（各向异性），$\vec{D}$ 与 $\vec{E}$ 通常不平行。
-
-\subsection{介电张量}
-在晶体的主轴坐标系 $(x, y, z)$ 中，本构关系表示为张量形式：
-\begin{equation}
-    \begin{pmatrix} D_x \\ D_y \\ D_z \end{pmatrix} = 
-    \begin{pmatrix} 
-    \varepsilon_x & 0 & 0 \\ 
-    0 & \varepsilon_y & 0 \\ 
-    0 & 0 & \varepsilon_z 
-    \end{pmatrix} 
-    \begin{pmatrix} E_x \\ E_y \\ E_z \end{pmatrix}
-\end{equation}
-定义主折射率 (Principal Refractive Indices)：
-\begin{equation}
-    n_x = \sqrt{\frac{\varepsilon_x}{\varepsilon_0}}, \quad n_y = \sqrt{\frac{\varepsilon_y}{\varepsilon_0}}, \quad n_z = \sqrt{\frac{\varepsilon_z}{\varepsilon_0}}
-\end{equation}
-
-\subsection{晶体的分类}
+\subsection{双折射现象}
+当光束射入各向异性晶体时，一般会分裂成两束折射光，这种现象称为双折射。
 \begin{itemize}
-    \item 各向同性体：$n_x = n_y = n_z$（立方晶系）。
-    \item 单轴晶体 (Uniaxial Crystal)：$n_x = n_y \neq n_z$（四方、六方、三方晶系）。
+    \item \textbf{o光 (寻常光)}：遵守折射定律，光速 $v_o$ 和折射率 $n_o$ 在各个方向上是一个常数，波面为球面。
+    \item \textbf{e光 (非寻常光)}：一般不遵守折射定律，光速 $v_e$ 和折射率 $n_e$ 随方向而改变，波面为旋转椭球面。
+\end{itemize}
+
+\subsubsection{折射率椭球}
+为了描述晶体中折射率随光振动方向的变化，引入折射率椭球方程：
+$$ \frac{x^2}{n_x^2} + \frac{y^2}{n_y^2} + \frac{z^2}{n_z^2} = 1 $$
+对于单轴晶体（如方解石），以光轴为旋转轴，$n_x=n_y=n_o, n_z=n_e$。
+\begin{itemize}
+    \item \textbf{主折射率}：$n_o$ 和 $n_e$。
+    \item \textbf{任意方向折射率}：设波法线与光轴夹角为 $\theta$，e光的折射率 $n'(\theta)$ 满足：
+    $$ \frac{1}{n'^2} = \frac{\cos^2\theta}{n_o^2} + \frac{\sin^2\theta}{n_e^2} $$
+\end{itemize}
+
+\subsection{晶体偏振器件}
+利用晶体的双折射性质，可以制成各种功能的偏振器件。
+
+\subsubsection{晶体棱镜}
+主要用于产生线偏振光或分离两束正交偏振光。
+\insertfigure{picture/2026-01-04-15-50-30.png}{0}{fig:0}
+\begin{itemize}
+    \item \textbf{尼科耳棱镜 (Nicol)}：利用全反射原理将 o 光反射吸收，只透射 e 光，获得线偏振光。
+    \item \textbf{洛雄棱镜 (Rochon)} 和 \textbf{沃拉斯顿棱镜 (Wollaston)}：用于分离 o 光和 e 光，使它们具有不同的传播方向（分束角）。
+\end{itemize}
+
+\subsubsection{波晶片}
+波晶片是厚度精确的晶体薄片，光轴平行于表面。o 光和 e 光通过波片后会产生光程差和相位差。
+\insertfigure{picture/2026-01-04-15-51-17.png}{0}{fig:0}
+\begin{itemize}
+    \item \textbf{相位差公式}：
+    $$ \delta = \frac{2\pi}{\lambda_0} (n_e - n_o) d $$
+    其中 $d$ 为波片厚度。
+    \item \textbf{四分之一波片 ($\lambda/4$片)}：$\delta = \pi/2$。
         \begin{itemize}
-            \item $z$ 轴称为光轴。
-            \item 令 $n_x = n_y = n_o$（寻常光折射率），$n_z = n_e$（非寻常光主折射率）。
+            \item 作用：将线偏振光转换为圆偏振光或椭圆偏振光，反之亦然。
         \end{itemize}
-    \item 双轴晶体 (Biaxial Crystal)：$n_x \neq n_y \neq n_z$（正交、单斜、三斜晶系）。
-\end{itemize}
-
-\section{折射率椭球}
-
-钟锡华教材特别推崇利用几何方法——折射率椭球（又称光率体）来分析光在晶体中的传播特性。
-
-\subsection{椭球方程}
-\begin{equation}
-    \frac{x^2}{n_x^2} + \frac{y^2}{n_y^2} + \frac{z^2}{n_z^2} = 1
-\end{equation}
-这是一个三维几何曲面，其主轴长度分别为 $2n_x, 2n_y, 2n_z$。
-
-\subsection{几何分析法}
-给定波法线方向 $\vec{s}$（即平面波的传播方向 $\vec{k}$ 的方向），如何确定允许的偏振方向和折射率？
-\begin{enumerate}
-    \item 过椭球中心作一个平面，该平面垂直于波法线 $\vec{s}$。
-    \item 该平面与折射率椭球的交线是一个椭圆。
-    \item 该椭圆的长轴和短轴方向，即为允许的两个线性偏振态（$\vec{D}$ 的振动方向）。
-    \item 椭圆半长轴和半短轴的长度，即为对应的两个折射率 $n'$ 和 $n''$。
-\end{enumerate}
-\textbf{结论}：一般情况下，沿任意方向 $\vec{s}$ 传播的光波，会分裂为两束偏振方向互相垂直、相速度不同的线偏振光。这就是**双折射 (Birefringence)**。
-
-\section{菲涅耳波法线方程}
-
-这是描述晶体光学的代数基础。设相速度为 $v_p = c/n$，波法线方向余弦为 $(s_x, s_y, s_z)$。
-从麦克斯韦方程组出发，可推导出关于相速度 $v_p$ 的方程：
-\begin{equation}
-    \frac{s_x^2}{v_p^2 - v_x^2} + \frac{s_y^2}{v_p^2 - v_y^2} + \frac{s_z^2}{v_p^2 - v_z^2} = 0
-\end{equation}
-其中 $v_i = c/n_i$ 为主相速度。
-这是一个关于 $v_p^2$ 的二次方程，对于给定的方向 $\vec{s}$，一般有两个正实根 $v_{p1}, v_{p2}$，对应两种传播模式。
-
-\section{单轴晶体中的双折射}
-
-单轴晶体 ($n_x=n_y=n_o, n_z=n_e$) 是最常见的研究对象。
-
-\subsection{o 光与 e 光}
-利用折射率椭球分析可知，对于单轴晶体：
-\begin{enumerate}
-    \item 寻常光 (Ordinary ray, o光)：
-    \begin{itemize}
-        \item 折射率恒为 $n_o$。
-        \item 相速度 $v_o = c/n_o$ 与方向无关。
-        \item 振动方向 ($\vec{D}_o$) 垂直于光轴和波法线构成的平面。
-    \end{itemize}
-    \item 非寻常光 (Extraordinary ray, e光)：
-    \begin{itemize}
-        \item 折射率 $n_e(\theta)$ 随波法线与光轴夹角 $\theta$ 变化。
-        \item \textbf{公式}：
-        \begin{equation}
-            \frac{1}{n_e^2(\theta)} = \frac{\cos^2\theta}{n_o^2} + \frac{\sin^2\theta}{n_e^2}
-        \end{equation}
-        \item 振动方向 ($\vec{D}_e$) 在光轴与波法线构成的平面内。
-    \end{itemize}
-\end{enumerate}
-
-\subsection{正晶体与负晶体}
-\begin{itemize}
-    \item 正晶体：$n_e > n_o$（即 $v_e < v_o$）。例如：石英。
-    \item 负晶体：$n_e < n_o$（即 $v_e > v_o$）。例如：方解石。
-\end{itemize}
-
-\subsection{惠更斯作图法}
-钟锡华教材中经典的作图法，用于确定折射光线的方向。
-\begin{itemize}
-    \item 原理：界面上的每一点作为次波源，发射子波。
-    \item 波面形状：
+    \item \textbf{半波片 ($\lambda/2$片)}：$\delta = \pi$。
         \begin{itemize}
-            \item o 光波面：球面。
-            \item e 光波面：旋转椭球面。
+            \item 作用：使线偏振光的振动面转动 $2\theta$ 角（$\theta$ 为入射偏振面与波片快轴的夹角）。
         \end{itemize}
-    \item 作图步骤：
-        1. 以入射点为中心画出 o 光球面和 e 光椭球面。
-        2. 根据折射定律的时空匹配条件（公切线/包络面），确定新的波前。
-        3. 连接波源中心与切点的连线即为光线方向。
+    \item \textbf{补偿器}：如巴比涅补偿器、索雷尔补偿器。可以提供线性可变的相位差，用于精确测量相位。
 \end{itemize}
-\textbf{注意}：在晶体中，光线方向（能量传播方向，坡印廷矢量）与波法线方向（相位传播方向，$\vec{k}$）通常\textbf{不重合}（o 光除外）。
+\insertfigure{picture/2026-01-04-15-53-07.png}{0}{fig:0}
+\subsection{偏振光的干涉}
+典型的偏振光干涉装置由“起偏器 $P_1$ — 波晶片 — 检偏器 $P_2$”组成。
 
-\section{晶体光学器件}
-
-\subsection{偏振棱镜}
-利用双折射性质和全反射原理，将 o 光和 e 光分离开，获得线偏振光。
+\textbf{干涉光强公式}：
+设 $P_1$ 与 $P_2$ 的透光轴夹角为 $\gamma$（图中为 $\beta$ 关联项），波片引入相位差为 $\delta$。
+\insertfigure{picture/2026-01-04-15-49-54.png}{0}{fig:0}
 \begin{itemize}
-    \item 尼科耳棱镜：早期使用，利用加拿大树胶粘合方解石。o 光在胶层发生全反射被吸收，e 光透过。
-    \item 格兰-泰勒棱镜：空气隙结构，透射率高，消光比极高（现代常用）。
-    \item 沃拉斯顿棱镜：由两块光轴互相垂直的直角棱镜胶合而成。o 光和 e 光折射率突变方向相反，导致两束光分角射出（双光束偏振分束器）。
-\end{itemize}
-
-\subsection{波片}
-利用晶体的双折射产生两个正交分量之间的相位差（延迟）。通常光轴平行于表面切割。
-设波片厚度为 $d$，工作波长 $\lambda$。
-\mydef{相位延迟量 $\delta$}
-\begin{equation}
-    \delta = \frac{2\pi}{\lambda} |n_o - n_e| d
-\end{equation}
-
-\begin{enumerate}
-    \item 全波片 ($\lambda$片)：$\delta = 2m\pi$。偏振态不变。
-    \item 半波片 ($\lambda/2$片)：$\delta = (2m+1)\pi$。
+    \item 当 $P_1 \parallel P_2$ (平行尼科耳) 时：
+    $$ I_{\parallel} = I_0 \cos^2 \frac{\delta}{2} $$
+    这时呈现互补色。
+    \item 当 $P_1 \perp P_2$ (正交尼科耳) 时：
+    $$ I_{\perp} = I_0 \sin^2 2\alpha \sin^2 \frac{\delta}{2} $$
+    其中 $\alpha$ 是入射偏振光与波片光轴的夹角。
     \begin{itemize}
-        \item 作用：线偏振光入射，出射仍为线偏振光，但振动面转过 $2\alpha$ 角（$\alpha$ 为入射振动面与快轴夹角）。
+        \item 若 $\alpha = 45^\circ$（对角位），则 $I = I_0 \sin^2 \frac{\delta}{2}$，干涉最明显。
+        \item 若 $\alpha = 0^\circ$ 或 $90^\circ$（消光位），则 $I=0$，无干涉。
     \end{itemize}
-    \item 四分之一波片 ($\lambda/4$片)：$\delta = (2m+1)\pi/2$。
-    \begin{itemize}
-        \item 作用：线偏振光（$\alpha=45^\circ$）入射 $\to$ 圆偏振光；圆偏振光入射 $\to$ 线偏振光。
-    \end{itemize}
-\end{enumerate}
-
-\section{偏振光的干涉}
-
-\subsection{干涉装置}
-起偏器 $P_1$ $\to$ 晶体波片 $C$ $\to$ 检偏器 $P_2$。
-由于晶体的双折射，o 光和 e 光在出射后获得相位差 $\delta$，在通过检偏器 $P_2$ 投影到同一方向后发生干涉。
-
-\subsection{透射光强公式}
-设 $P_1, P_2$ 透光轴夹角为 $\beta$，波片光轴与 $P_1$ 夹角为 $\alpha$。
-\begin{equation}
-    I = I_0 [ \cos^2 \beta - \sin 2\alpha \sin 2(\beta-\alpha) \sin^2(\delta/2) ]
-\end{equation}
-\textbf{特例}：
-\begin{itemize}
-    \item 正交偏振 ($P_1 \perp P_2, \beta = 90^\circ$)：
-    $$ I_{\perp} = I_0 \sin^2 2\alpha \sin^2(\delta/2) $$
-    若 $\delta = 2m\pi$（全波片），$I=0$（黑）。若 $\delta = (2m+1)\pi$（半波片），$I$ 最大。
-    \item 平行偏振 ($P_1 \parallel P_2, \beta = 0^\circ$)：
-    $$ I_{\parallel} = I_0 (1 - \sin^2 2\alpha \sin^2(\delta/2)) $$
-    与正交情况互补：$I_{\perp} + I_{\parallel} = I_0$（色互补）。
 \end{itemize}
 
-\subsection{会聚光干涉}
-当用会聚光束照射晶体切片时，不同入射角对应不同的光程差 $\delta$，在焦平面上形成特定的干涉图样。
+\subsection{旋光性与电光效应}
+\subsubsection{旋光性}
+某些物质（如石英、糖溶液）能使线偏振光的振动面发生旋转。
+\insertfigure{picture/2026-01-04-15-53-39.png}{0}{fig:0}
 \begin{itemize}
-    \item 单轴晶体垂直光轴切片：在正交偏振场下，呈现一系列同心彩色圆环（等色线），并被一个黑色的马耳他十字（等倾线）所分割。
+    \item \textbf{菲涅耳唯象解释}：线偏振光可分解为一束左旋圆偏振光和一束右旋圆偏振光。在旋光介质中，左旋和右旋光的折射率不同（$n_L \neq n_R$），传播速度不同，导致出射时合成矢量的方向发生偏转。
+    \item \textbf{旋光角公式}：$\psi = \alpha d$ （$\alpha$ 为旋光率）。
+\end{itemize}
+
+\subsubsection{电光效应}
+外加电场改变介质折射率的现象。
+\begin{itemize}
+    \item \textbf{克尔效应 (Kerr Effect)}：各向同性介质在强电场下变为双折射介质，诱导的双折射率差 $\Delta n$ 与电场平方成正比：
+    $$ \Delta n \propto \lambda E^2 $$
+    \item \textbf{泡克耳斯效应 (Pockels Effect)}：线性电光效应，折射率变化与电场 $E$ 的一次方成正比。
 \end{itemize}

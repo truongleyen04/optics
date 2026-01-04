@@ -1,78 +1,3 @@
-\section{二维傅里叶变换}
-
-在波动光学中，空间复振幅分布 $U(x, y)$ 与其空间频谱 $\mathcal{F}\{U\}$ 构成傅里叶变换对。这揭示了光场在**空域 (Space Domain)** 和**频域 (Frequency Domain)** 的对偶关系。
-
-\subsection{定义与存在条件}
-设 $f(x, y)$ 为空间域函数，$u, v$ 为空间频率变量（单位：$\text{mm}^{-1}$）。
-\mydef{正变换}
-\begin{equation}
-    F(u, v) = \mathcal{F}\{f(x, y)\} = \iint_{-\infty}^{\infty} f(x, y) e^{-\ii 2\pi (ux + vy)} \dd x \dd y
-\end{equation}
-
-\mydef{逆变换}
-\begin{equation}
-    f(x, y) = \mathcal{F}^{-1}\{F(u, v)\} = \iint_{-\infty}^{\infty} F(u, v) e^{\ii 2\pi (ux + vy)} \dd u \dd v
-\end{equation}
-
-\textbf{物理意义}：逆变换公式表明，任意复杂的波场 $f(x, y)$ 都可以看作是无穷多个不同方向、不同振幅和相位的平面波 $e^{\ii 2\pi (ux + vy)}$ 的线性叠加。$F(u, v)$ 即为这些平面波的复振幅权重（角谱）。
-
-\section{常用函数及其频谱}
-
-钟锡华教材非常强调对这几个“积木”函数的熟练掌握，它们是分析复杂光学系统的基础。
-
-\subsection{矩形函数}
-定义：$\rect(x) = \begin{cases} 1, & |x| < 1/2 \\ 0, & |x| > 1/2 \end{cases}$
-\begin{itemize}
-    \item \textbf{二维矩孔}：$f(x, y) = \rect(\frac{x}{a}) \rect(\frac{y}{b})$
-    \item \textbf{频谱}：$F(u, v) = |ab| \sinc(au) \sinc(bv)$
-    \item \textbf{注}：钟书定义 $\sinc(x) = \frac{\sin(\pi x)}{\pi x}$。
-\end{itemize}
-
-\subsection{圆域函数}
-定义：$\circfunc(r) = \begin{cases} 1, & r < 1 \\ 0, & r > 1 \end{cases}$，其中 $r = \sqrt{x^2+y^2}$。
-\begin{itemize}
-    \item \textbf{二维圆孔}：$f(x, y) = \circfunc(\frac{\sqrt{x^2+y^2}}{a})$
-    \item \textbf{频谱}：$F(\rho) = |a|^2 \frac{J_1(2\pi a \rho)}{a \rho}$，其中 $\rho = \sqrt{u^2+v^2}$。
-    \item 这是艾里斑强度的振幅基础。
-\end{itemize}
-
-\subsection{狄拉克 $\delta$ 函数}
-\mydef{筛选性质}
-$\int_{-\infty}^{\infty} f(x) \delta(x-x_0) \dd x = f(x_0)$。
-\begin{itemize}
-    \item $\mathcal{F}\{\delta(x, y)\} = 1$ （点源的频谱是均匀的平面波谱）。
-    \item $\mathcal{F}\{1\} = \delta(u, v)$ （均匀平面波对应单一空间频率）。
-\end{itemize}
-
-\subsection{梳状函数}
-定义：$\comb(x) = \sum_{n=-\infty}^{\infty} \delta(x-n)$。
-\begin{itemize}
-    \item \textbf{性质}：$\mathcal{F}\{\comb(x)\} = \comb(u)$。梳状函数的傅里叶变换仍是梳状函数。
-    \item \textbf{应用}：描述光栅、采样过程。
-\end{itemize}
-
-\section{基本定理与卷积}
-
-\subsection{位移定理}
-\begin{itemize}
-    \item \textbf{空域位移} $\leftrightarrow$ \textbf{频域线性相移}：
-    $$ f(x-x_0, y-y_0) \Longleftrightarrow F(u, v) e^{-\ii 2\pi (u x_0 + v y_0)} $$
-    \item \textbf{频域位移} $\leftrightarrow$ \textbf{空域线性相移}：
-    $$ f(x, y) e^{\ii 2\pi (u_0 x + v_0 y)} \Longleftrightarrow F(u-u_0, v-v_0) $$
-    这是斜入射照明分析的基础。
-\end{itemize}
-
-\subsection{卷积定理}
-定义卷积：$g(x, y) = f(x, y) * h(x, y) = \iint f(\xi, \eta) h(x-\xi, y-\eta) \dd \xi \dd \eta$。
-\begin{itemize}
-    \item \textbf{时域卷积} $\leftrightarrow$ \textbf{频域乘积}：
-    $$ \mathcal{F}\{f * h\} = \mathcal{F}\{f\} \cdot \mathcal{F}\{h\} $$
-    这构成了线性系统理论的基础：输出 = 输入 * 脉冲响应 $\implies$ 输出频谱 = 输入频谱 $\cdot$ 传递函数。
-\end{itemize}
-
-\subsection{巴塞伐尔定理}
-能量守恒在空域和频域的体现：
-$$ \iint |f(x, y)|^2 \dd x \dd y = \iint |F(u, v)|^2 \dd u \dd v $$
 
 \section{相因子分析}
 
@@ -85,12 +10,12 @@ $$ \iint |f(x, y)|^2 \dd x \dd y = \iint |F(u, v)|^2 \dd u \dd v $$
     \item \textbf{作用}：
         \begin{itemize}
             \item 在空域乘以线性相因子 $\implies$ 频谱发生平移（位移定理）。
-            \item 例如：棱镜的作用就是引入线性相因子。
+            \item 例如：棱镜的作用就是引入线性相因子$e^{-\ii k(n-1)\alpha x}$。
         \end{itemize}
 \end{itemize}
-
+\insertfigure{picture/2026-01-04-15-12-25.png}{0}{fig:0}
 \subsection{二次相因子}
-形式：$e^{\ii \frac{k}{2R} (x^2+y^2)}$。
+形式：$e^{\ii \frac{k}{2R} (x^2+y^2)}$
 \begin{itemize}
     \item \textbf{物理意义}：傍轴近似下的球面波。
     \item \textbf{参数符号}：
@@ -113,7 +38,136 @@ $$ t_l(x, y) = e^{-\ii \frac{k}{2f} (x^2+y^2)} $$
     $$ U_{out} = e^{\ii \frac{k}{2d_1}(x^2+y^2)} \cdot e^{-\ii \frac{k}{2f}(x^2+y^2)} = e^{\ii \frac{k}{2} (\frac{1}{d_1} - \frac{1}{f}) (x^2+y^2)} $$
     若满足成像公式 $\frac{1}{d_1} + \frac{1}{d_2} = \frac{1}{f}$，则输出变为 $e^{-\ii \frac{k}{2d_2}(x^2+y^2)}$，即会聚到 $d_2$ 处的球面波。
 \end{itemize}
+\subsection{余弦光栅}
+这是光学信息处理中最基础的组件之一，也是理解复杂滤波器（如全息图）的基石。
 
+\subsubsection{屏函数与制备}
+\textbf{定义}：透射率函数呈余弦变化的衍射屏。
+\begin{equation}
+    t(x,y) = t_0 + t_1 \cos(2\pi f_0 x + \varphi_0)
+\end{equation}
+其中 $f_0 = 1/d$ 为空间频率，$d$ 为光栅常数。
+\begin{itemize}
+    \item \textbf{制备原理}：利用双光束干涉全息记录。将两束平面波的干涉条纹 $I(x) = I_0(1+\gamma \cos(2\pi f x))$ 记录在线性感光材料上。
+    \item \textbf{线性条件}：要求显影后的振幅透射率 $t$ 与曝光量 $E$ (即强度 $I$) 成线性关系，即 $t = \alpha + \beta I$。
+\end{itemize}
+
+\subsubsection{衍射特征}
+利用欧拉公式展开屏函数，可将出射光场分解为三项：
+\begin{equation}
+    U_{out}(x) = A \cdot t(x) = \underbrace{A t_0}_{0\text{级}} + \underbrace{\frac{1}{2} A t_1 e^{\ii(2\pi f_0 x + \varphi_0)}}_{+1\text{级}} + \underbrace{\frac{1}{2} A t_1 e^{-\ii(2\pi f_0 x + \varphi_0)}}_{-1\text{级}}
+\end{equation}
+\textbf{物理图景}：
+\begin{itemize}
+    \item \textbf{0级斑}：沿原方向传播的平面波。
+    \item \textbf{$\pm 1$级斑}：分别向上、下倾斜的平面波，衍射角满足 $\sin \theta_{\pm 1} = \pm f_0 \lambda$。
+    \item \textbf{特点}：余弦光栅\textbf{只产生 0 级和 $\pm 1$ 级}三个衍射斑，没有更高级次，这是其与普通黑白光栅最大的区别。
+\end{itemize}
+\subsection{阿贝成像原理}
+阿贝提出显微镜成像的“两步成像论”，深刻揭示了相干成像的物理机制。
+\insertfigure{picture/2026-01-04-15-39-58.png}{0}{fig:0}
+\begin{itemize}
+    \item \textbf{第一步：分频（衍射）}
+    物体（光栅）在相干光照明下，通过物镜，在透镜后焦面上形成夫琅禾费衍射图样。这个焦平面被称为\textbf{频谱面}。每一点对应物体的一个空间频率分量。
+    \item \textbf{第二步：合成（干涉）}
+    频谱面上发出的次波在像面上相干叠加，重建（合成）出像。
+\end{itemize}
+\textbf{核心结论}：成像过程本质上是两次傅里叶变换（$\mathcal{F} \to \mathcal{F}^{-1}$）。改变频谱面上的光阑（空间滤波器），就能改变像的结构。
+\subsection{4F系统}
+4F系统是最标准的光学信息处理系统。由两块焦距为 $f$ 的透镜组成，物面、透镜L1、频谱面、透镜L2、像面依次间隔 $f$ 排列。
+\begin{itemize}
+    \item \textbf{输入面 ($P_1$)}：放置物体 $t(x,y)$。
+    \item \textbf{频谱面 ($P_2$)}：位于 L1 后焦面（即 L2 前焦面）。在此处光场分布为 $T(u,v) = \mathcal{F}\{t\}$。
+    \item \textbf{输出面 ($P_3$)}：位于 L2 后焦面。在此处光场为 $t(-x, -y)$（倒立实像）。
+\end{itemize}
+
+\subsection{图像加减运算（基于余弦光栅）}
+利用 4F 系统和余弦光栅滤波器，通过控制相位实现图像 $A$ 和 $B$ 的代数运算。
+\insertfigure{picture/2026-01-04-15-37-54.png}{0}{fig:0}
+\subsubsection{原理与光路}
+\begin{itemize}
+    \item \textbf{输入面}：放置两幅图像，中心分别位于 $x=0$ (图像A) 和 $x=-a$ (图像B)。
+    \item \textbf{频谱面}：放置频率为 $f_0$ 的余弦光栅作为滤波器。
+    \item \textbf{输出面}：余弦光栅将每个图像的频谱一分为三。
+        \begin{itemize}
+            \item 图像 A 的 $+1$ 级像 $A_{+1}$ 向下平移。
+            \item 图像 B 的 $-1$ 级像 $B_{-1}$ 向上平移。
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{重合与运算条件}
+为了让 $A_{+1}$ 与 $B_{-1}$ 在输出面上完全重合，必须满足\textbf{几何位置匹配条件}：
+\begin{equation}
+    a = 2 f_0 \lambda F
+\end{equation}
+此时，重合区域的复振幅为两图像的叠加。通过微调光栅滤波器的位置 $\Delta u$，引入附加相位差 $\delta$：
+\begin{itemize}
+    \item \textbf{图像相加}：当 $\delta = 0, 2\pi$ 时，输出 $A+B$。
+    \item \textbf{图像相减}：当 $\delta = \pi$ 时，输出 $A-B$（实现差分）。
+\end{itemize}
+实现“相减”所需的\textbf{特征位移量} $\Delta u_0$ 为光栅周期的四分之一：
+\begin{equation}
+    \Delta u_0 = \frac{1}{4 f_0} = \frac{d_0}{4}
+\end{equation}
+\subsection{图像微分（基于复合光栅）}
+图像微分的本质是提取图像的边缘，即计算 $\tilde{t}(x+\Delta x, y) - \tilde{t}(x,y)$。
+\insertfigure{picture/2026-01-04-15-37-32.png}{0}{fig:0}
+\subsubsection{复合光栅滤波器}
+为了同时实现“微小错位”和“相位相反”，使用包含两个接近频率 $f_1$ 和 $f_2$ 的\textbf{复合光栅}：
+\begin{equation}
+    \tilde{H}(u) = t_0 + t_1 \cos(2\pi f_1 u) + t_2 \cos(2\pi f_2 u)
+\end{equation}
+设差频 $\Delta f = f_2 - f_1 \ll f_1, f_2$。
+
+\subsubsection{运算机制}
+\begin{enumerate}
+    \item \textbf{微小错位}：由于频率不同，两组 $\pm 1$ 级衍射光的衍射角略有差异，导致在像面上形成两个微小错位的像。错位量 $\Delta x'$ 为：
+    \begin{equation}
+        \Delta x' = \lambda F \Delta f
+    \end{equation}
+    \item \textbf{$\pi$ 相位差}：通过精密平移复合光栅 $\Delta u$，使两个频率分量产生相对相移。为了实现相减（微分），需满足相位差 $\delta = \pi$。
+    所需的滤波器位移量为：
+    \begin{equation}
+        \Delta u_0 = \frac{1}{2 \Delta f}
+    \end{equation}
+\end{enumerate}
+\textbf{结果}：在像面上获得了图像的差分 $\frac{\partial \tilde{t}}{\partial x} \Delta x'$，实现了边缘增强效果，如熊猫图所示，轮廓鲜明而内部被抵消。
+\subsubsection{显色滤波（$\theta$ 调制）}
+一种将黑白图像假彩色化的技术。
+\begin{itemize}
+    \item \textbf{编码}：将物体不同灰度或区域，分别用不同取向（$\theta$）的光栅进行编码（例如：天空区域贴横条纹，地面区域贴竖条纹）。
+    \item \textbf{频谱分离}：在 4F 系统的频谱面上，不同取向的光栅衍射斑出现在不同方位角上。
+    \item \textbf{滤波与染色}：在频谱面上不同方位的衍射斑处放置不同颜色的滤色片。
+    \item \textbf{合成}：像面上不同区域将呈现不同颜色。
+\end{itemize}
+\insertfigure{picture/2026-01-04-15-37-11.png}{0}{fig:0}
+\subsection{泽尼克相衬法}
+\insertfigure{picture/2026-01-04-15-36-46.png}{0}{fig:0}
+\textbf{背景}：生物标本等“相位物体”透明度均匀，仅改变透射光的相位。人眼和普通探测器只能分辨光强（振幅），看不见相位变化。
+\textbf{原理}：将不可见的相位信息转换为可见的振幅（光强）变化。
+
+设相位物体复透射率为 $t(x) = e^{\ii \phi(x)}$。当 $\phi(x) \ll 1$ 时（弱相位近似）：
+\begin{equation}
+    t(x) \approx 1 + \ii \phi(x)
+\end{equation}
+\begin{itemize}
+    \item \textbf{直射光（背景）}：对应常数项 $1$，集中在频谱面中心（零频）。
+    \item \textbf{衍射光（信息）}：对应 $\ii \phi(x)$，分布在频谱面周围。注意两者有 $\pi/2$ 的相位差（因子 $\ii$）。
+\end{itemize}
+普通显微镜下光强 $I \approx |1 + \ii \phi|^2 \approx 1 + \phi^2 \approx 1$（反差极小）。
+
+
+
+\textbf{相衬显微镜操作}：
+在频谱面中心（零频位置）放置一块\textbf{相板}，使直射光发生 $\pm \pi/2$ 的相移（乘以因子 $\pm \ii$）。
+\begin{itemize}
+    \item \textbf{正相衬}：相移 $+\pi/2$（乘以 $\ii$）。直射光变为 $\ii$。
+    像面复振幅：$U_{im} \approx \ii \cdot 1 + \ii \phi(x) = \ii [1 + \phi(x)]$。
+    像面光强：$I \approx |1 + \phi(x)|^2 \approx 1 + 2\phi(x)$。
+    \textbf{结果}：相位越大的地方越亮。
+    \item \textbf{负相衬}：相移 $-\pi/2$（乘以 $-\ii$）。光强 $I \approx 1 - 2\phi(x)$。
+\end{itemize}
+此方法即荣获诺贝尔奖的“泽尼克相衬法”。
 \subsection{透镜的傅里叶变换性质}
 这是傅里叶光学的核心结论。
 \textbf{结论}：若物体置于透镜的前焦面，则在透镜的后焦面上，光场分布准确地正比于物函数的傅里叶变换。
